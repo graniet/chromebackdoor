@@ -24,3 +24,9 @@ chrome.runtime.onMessage.addListener(
         var test = bgpage.email;
     }
 });
+var theValue = "lol";
+chrome.storage.sync.set({'value': theValue}, function()
+{
+    // Notify that we saved.
+    console.log('Settings saved');
+});

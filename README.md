@@ -41,4 +41,8 @@ Update lock page in 1
 ```
 
 ## Go to web relais
-enjoy
+
+```shell
+Url = 
+Login = 
+```

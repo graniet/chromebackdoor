@@ -1,5 +1,10 @@
 ![Chrome browser backdoor](http://img15.hostingpics.net/pics/394637logoback.png)
 
+## Information
+
+Username panel : root
+Password panel : toor
+
 ## Network
 
 Backdoor => Relais => Web Panel

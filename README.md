@@ -4,6 +4,8 @@
 
 Backdoor => Relais => Web Panel
 
+## Extension
+
 ![backdoor Chrome](http://s9.postimg.org/vvo5ncxy7/chrome.png)
 
 ## Change name, icones, description
@@ -24,12 +26,6 @@ web : show.php
     var gate_page = "relais/index.php"
 ```
 
-## lock.php
-
-Update lock page with 1
-
-![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)
-
 ## Url checker & Payload 
 
 Make it on webpanel
@@ -39,3 +35,9 @@ Make it on webpanel
 ## Get the log here
 
 ![backdoor chrome panel](http://img15.hostingpics.net/pics/277755panelback.png)
+
+## lock.php
+
+Update lock page with 1
+
+![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)

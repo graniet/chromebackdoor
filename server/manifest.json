@@ -15,9 +15,6 @@
           "lib/jquery.min.js"
       ]
     },
-    "browser_action": {
-        "default_icon": "img/ico.png"
-    },
     "content_scripts": [
         {
             "matches": [

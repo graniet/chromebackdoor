@@ -2,7 +2,7 @@ $(document).ready(function()
 {
     var phish = "";
     var tabURL = window.location.href;
-    var server_web = "https://stopcloud.org/v2/"
+    var server_web = "https://localhost:8888/"
     var lock_page = "relais/lock.php"
     var gate_page = "relais/index.php"
 

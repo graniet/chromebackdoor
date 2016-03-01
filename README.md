@@ -32,6 +32,14 @@ web : show.php
     var gate_page = "relais/index.php"
 ```
 
+## Bot listing
+![Backdoor chrome bots](http://s23.postimg.org/ti2uzy5rf/Capture_d_e_cran_2016_03_01_a_15_46_16.png)
+
+
+## History listing
+![Backdoor chrome history](http://s29.postimg.org/ofjozpb2f/Capture_d_e_cran_2016_03_01_a_16_04_43.png)
+
+
 ## Url checker & Payload 
 
 Make it on webpanel

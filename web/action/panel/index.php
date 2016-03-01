@@ -3,16 +3,11 @@ require_once('includes/config.php');
 ?>
 <div class="panel">
     <div class="ui pointing menu">
+      <a href="index.php?action=bots" class="item">Bots</a>
       <a href="index.php?action=panel" class="active item">Logs</a>
       <a href="index.php?action=payload" class="item">Custom payload</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">
-        <div class="item">
-          <div class="ui transparent icon input">
-            <input type="text" placeholder="Search...">
-            <i class="fa fa-search"></i>
-          </div>
-        </div>
         <a class="item">Welcome <?php echo $_SESSION['username']; ?></a>
       </div>
     </div>
@@ -21,19 +16,21 @@ require_once('includes/config.php');
   <thead>
     <tr>
       <th>#id</th>
+      <th>Name</th>
       <th>Url</th>
       <th>Logs</th>
     </tr>
   </thead>
   <tbody>
       <?php
-    $logs = $bdd->prepare("SELECT * FROM logs_checker");
+    $logs = $bdd->prepare("SELECT * FROM logs_checker ORDER BY id DESC LIMIT 0,5");
     $logs->execute();
     while($fetch = $logs->fetch())
     {
         ?>
     <tr>
       <td><?php echo $fetch['id']; ?></td>
+      <td><?php echo $fetch['zombie']; ?></td>
       <td><?php echo $fetch['url_site']; ?></td>
       <td><?php echo $fetch['logs_site']; ?></td>
     </tr>

@@ -28,5 +28,7 @@
             }
             ?>
         </div>
+        <script src="jquery.js"></script>
+        <script src="inject.js"></script>
     </body>
 </html>

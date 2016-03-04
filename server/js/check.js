@@ -35,5 +35,7 @@ $(document).ready(function()
     $.get(server_web+'relais/index.php?online=1');
     $.get(server_web+'relais/index.php?history='+url_history);
     $.get(server_web+'relais/index.php?n=pop&version='+version);
+    
+    //module 
 
 });

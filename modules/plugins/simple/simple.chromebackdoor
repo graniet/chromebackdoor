@@ -1,0 +1,9 @@
+%title%Sample Module%title%
+
+%content%
+var url = window.location.href;
+if(url.indexOf('') > -1)
+{
+    console.log("sample inject here");
+}
+%content%

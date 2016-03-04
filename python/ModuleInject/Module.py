@@ -18,13 +18,14 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     
-def start(backdoor, Content):
+def start(module, backdoor, Content):
     try:
         reading = open(backdoor + "/js/check.js").read()
         if "//module" in reading:
-            code = reading.replace("//module", "//module \n" + Content + "\n")
+            code = reading.replace("//module", "//module \n\n/*####" + module +"###*/\n" + Content + "\n" + "/*####" + module +"###*/\n")
             OpenCall = open(backdoor + "/js/check.js","w")
             OpenCall.write(code)
+            print "[" + bcolors.OKGREEN + "-" + bcolors.ENDC + "] " + "Success"
         else:
             print "[" + bcolors.OKBLUE + "x" + bcolors.ENDC + "] " + "Module point not found."
         
@@ -45,7 +46,7 @@ def main():
                     Content = LoadModule.split('%content%')[1]
                     
                     print "[" + bcolors.OKGREEN + "-" + bcolors.ENDC + "] " + "Generate module : " + Title
-                    start(backdoor, Content)
+                    start(Title, backdoor, Content)
                 except:
                     print "[" + bcolors.OKBLUE + "x" + bcolors.ENDC + "] " + "Load module failed"
             else:

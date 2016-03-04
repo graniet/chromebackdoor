@@ -32,6 +32,16 @@ web : show.php
     var gate_page = "relais/index.php"
 ```
 
+## Extentions binder (Inject)
+
+![Chrome Extension Binder](http://img15.hostingpics.net/pics/838684Capturedecran20160304a110804.png)
+
+![Chrome Extension Binder](http://img15.hostingpics.net/pics/200669Capturedecran20160304a111014.png)
+
+![Chrome Extension Binder](http://img15.hostingpics.net/pics/722273Capturedecran20160304a110922.png)
+
+![Chrome Extension Binder](http://img15.hostingpics.net/pics/530976Capturedecran20160304a110908.png)
+
 ## Bot listing
 ![Backdoor chrome bots](http://s23.postimg.org/ti2uzy5rf/Capture_d_e_cran_2016_03_01_a_15_46_16.png)
 

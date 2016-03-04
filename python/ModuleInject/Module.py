@@ -44,7 +44,9 @@ def main():
                     
                     Title = LoadModule.split('%title%')[1]
                     Content = LoadModule.split('%content%')[1]
-                    
+                    if "%option%" in LoadModule:
+                        Option = LoadModule.split('%option%')[1]
+                        print "[" + bcolors.OKGREEN + "-" + bcolors.ENDC + "] " + "Instruction module : " + Option
                     print "[" + bcolors.OKGREEN + "-" + bcolors.ENDC + "] " + "Generate module : " + Title
                     start(Title, backdoor, Content)
                 except:

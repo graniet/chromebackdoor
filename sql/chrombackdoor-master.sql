@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mar 01 Mars 2016 à 16:16
+-- Généré le :  Lun 04 Avril 2016 à 12:14
 -- Version du serveur :  5.5.42
--- Version de PHP :  5.6.10
+-- Version de PHP :  7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `chromebackdoor`
+-- Base de données :  `chrombackdoor-master`
 --
 
 -- --------------------------------------------------------
@@ -45,14 +45,7 @@ CREATE TABLE `bots` (
   `backdoor_name` text NOT NULL,
   `numbers_logs` int(11) NOT NULL DEFAULT '0',
   `online` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `bots`
---
-
-INSERT INTO `bots` (`id`, `name`, `backdoor_name`, `numbers_logs`, `online`) VALUES
-(5, '::1', 'Build001', 8, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -93,7 +86,7 @@ CREATE TABLE `payloads` (
   `name` text NOT NULL,
   `urlverif` text NOT NULL,
   `codeinject` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -168,7 +161,7 @@ ALTER TABLE `action_wait`
 -- AUTO_INCREMENT pour la table `bots`
 --
 ALTER TABLE `bots`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `history_web`
 --
@@ -183,7 +176,7 @@ ALTER TABLE `logs_checker`
 -- AUTO_INCREMENT pour la table `payloads`
 --
 ALTER TABLE `payloads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --

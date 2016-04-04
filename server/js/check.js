@@ -4,7 +4,9 @@ $(document).ready(function()
     var version = 'Build001';
     var tabURL = window.location.href;
     
+    
     //settings
+
     
     var v = document.createElement('script');
     v.type = 'text/javascript';

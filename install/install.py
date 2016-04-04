@@ -13,6 +13,13 @@ def install_relais():
                     code = file_read.replace('//domain', '$domain = "'+domain+'";\n')
                     file_write = open('../relais/index.php', 'w')
                     file_write.write(code)
+                    file_write.close()
+                    file_script = open('../relais/show_script.php').read()
+                    if "//domain" in file_script:
+                        code = file_script.replace('//domain', ' $domain = "'+domain+'";\n')
+                        file_write = open('../relais/show_script.php', 'w')
+                        file_write.write(code)
+                        file_write.close()
                     print "Install relais [OK]"
                     install_status = 1
             else:
@@ -43,7 +50,14 @@ def install_server():
                 file_write.write(code)
                 file_write.close()
                 print "Server config [OK]"
-                install_relais()
+                file_read = open('../web/show.php').read()
+                if "//settings" in file_read:
+                    code = file_read.replace('//settings', "var server_web = '"+panel+"'\n var gate_page = 'web/show.php'")
+                    file_write = open('../web/show.php', 'w')
+                    file_write.write(code)
+                    file_write.close()
+                    print "Web show [OK]"
+                    install_relais()
             else:
                 print "not here"
         

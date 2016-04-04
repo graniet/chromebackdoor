@@ -1,3 +1,3 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=chromebackdoor','root','root');
+$bdd = new PDO('mysql:host=localhost;dbname=chrombackdoor-master','root','toor');
 ?>

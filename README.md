@@ -4,6 +4,7 @@
 + [Install guide](https://www.youtube.com/watch?v=uc4817555Fc)
 + [Binder guide](https://www.youtube.com/watch?v=-dndxUl5a1E)
 + [Module guide](https://www.youtube.com/watch?v=BO05H_4TbSE)
++ [Form grabber plugins](https://www.youtube.com/watch?v=c_u6ec87GZs)
 
 ## Information
 

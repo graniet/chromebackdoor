@@ -2,6 +2,16 @@
 
 import os,sys
 
+def logo():
+    print """
+           ____ _                              ____             _       _                  
+      / ___| |__  _ __ ___  _ __ ___   ___| __ )  __ _  ___| | ____| | ___   ___  _ __ 
+     | |   | '_ \| '__/ _ \| '_ ` _ \ / _ \  _ \ / _` |/ __| |/ / _` |/ _ \ / _ \| '__|
+     | |___| | | | | | (_) | | | | | |  __/ |_) | (_| | (__|   < (_| | (_) | (_) | |   
+      \____|_| |_|_|  \___/|_| |_| |_|\___|____/ \__,_|\___|_|\_\__,_|\___/ \___/|_|   
+                                                                                   
+    """
+
 def install_relais():
     install_status = 0
     try:
@@ -69,6 +79,7 @@ def main():
         if(sys.argv[1] == "install"):
             install_server()
     else:
-        print sys.argv[0] + " install"
+        print "usage : python " + sys.argv[0] + " install"
 
+logo()
 main()

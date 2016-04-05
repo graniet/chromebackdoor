@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+require_once('includes/config.php');
+checkupdate();
+?>
 <html>
     <head>
         <title>Chrome Panel</title>

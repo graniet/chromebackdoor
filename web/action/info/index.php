@@ -1,5 +1,4 @@
 <?php
-require_once('includes/config.php');
 if(isset($_GET['id']) && $_GET['id'] == ''){
     exit(1);
 }

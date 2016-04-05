@@ -1,6 +1,3 @@
-<?php
-require_once('includes/config.php');
-?>
 <div class="panel">
     <div class="ui pointing menu">
       <a href="index.php?action=bots" class="active item">Bots</a>

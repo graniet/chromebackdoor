@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Lun 04 Avril 2016 à 12:14
+-- Généré le :  Mar 05 Avril 2016 à 18:07
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -45,6 +45,20 @@ CREATE TABLE `bots` (
   `backdoor_name` text NOT NULL,
   `numbers_logs` int(11) NOT NULL DEFAULT '0',
   `online` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `bot_settings`
+--
+
+CREATE TABLE `bot_settings` (
+  `id` int(11) NOT NULL,
+  `setting_name` text NOT NULL,
+  `setting_value` text NOT NULL,
+  `bot_id` text NOT NULL,
+  `available` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,6 +139,12 @@ ALTER TABLE `bots`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `bot_settings`
+--
+ALTER TABLE `bot_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `history_web`
 --
 ALTER TABLE `history_web`
@@ -161,6 +181,11 @@ ALTER TABLE `action_wait`
 -- AUTO_INCREMENT pour la table `bots`
 --
 ALTER TABLE `bots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `bot_settings`
+--
+ALTER TABLE `bot_settings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `history_web`

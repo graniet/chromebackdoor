@@ -1,4 +1,4 @@
-![Chrome browser backdoor](http://s30.postimg.org/9cs16cj7l/logochromebackdoor.png)
+![Chrome browser backdoor](http://s24.postimg.org/xls0xq1ud/logochromebackdoor2.png)
 
 ## VIDEO
 + [Install guide](https://www.youtube.com/watch?v=uc4817555Fc)

@@ -36,7 +36,8 @@ $z_name = $bot->bot_id;
         $select->bindParam(':bot_id', $_GET['id']);
         $select->execute();
         if($select->rowCount() > 0){
-            echo "<a class='ui button' href='index.php?action=facebookspy&id='".$_GET['id'].">Look last conversation</a>";
+            $ids = $_GET['id'];
+            echo "<a class='ui button' href='index.php?action=facebookspy&id=".$ids."'>Look last conversation</a>";
         }
         ?>
     </div>

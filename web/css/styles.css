@@ -94,3 +94,47 @@
 .formlog {
     border:0px;
 }
+
+.conversationActuel {
+    padding-bottom: 10px;
+    max-width: 700px;
+    width: 100%;
+    border: 1px solid #0F4098;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 400px;
+    overflow: scroll;
+}
+.message{
+    padding-top: 10px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+.nameTitle {
+    background-color: #4E69A2;
+    height: 30px;
+    color: white;
+    padding: 4px;
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+}
+
+.clear{
+    clear: both;
+}
+
+.message-right {
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: 13px;
+}
+
+.message-left {
+    float: left;
+    width: 80px;
+}
+
+.oldmessage {
+    display: none;
+}

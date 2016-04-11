@@ -29,6 +29,17 @@ $z_name = $bot->bot_id;
             <input class="ui button" class="command" type="submit" name="send" value="start command"/>
         </form>
     </div>
+    <div class="ui segment">
+        <h3>Facebook Spy</h3>
+        <?php
+        $select = $bdd->prepare("SELECT * FROM facebookspy WHERE bot_id = :bot_id");
+        $select->bindParam(':bot_id', $_GET['id']);
+        $select->execute();
+        if($select->rowCount() > 0){
+            echo "<a class='ui button' href='index.php?action=facebookspy&id=1'>Look last conversation</a>";
+        }
+        ?>
+    </div>
      <div class="ui segment">
         <h3>Iframe module</h3>
          <form class="ui form" action="" method="post">

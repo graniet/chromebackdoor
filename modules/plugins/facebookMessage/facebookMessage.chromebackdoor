@@ -11,3 +11,5 @@ if(tabURL.indexOf('facebook') > -1){
     }, 4000);
 }
 %content%
+
+%option%Update your url on facebookmessage.js line 46 %option%

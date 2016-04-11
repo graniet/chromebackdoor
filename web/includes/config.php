@@ -1,6 +1,6 @@
 <?php
 $bdd = new PDO('mysql:host=localhost;dbname=chrombackdoor-master','root','toor');
-define('__VERSION__', '1.0');
+define('__VERSION__', '1.2');
 
 function Checkupdate(){
     $new_version = file_get_contents('https://raw.githubusercontent.com/graniet/chromebackdoor/master/version.txt');

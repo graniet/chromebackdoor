@@ -128,27 +128,27 @@
 .message-right {
     font-size: 12px;
     padding-top: 5px;
-    line-height: 13px;
+    line-height: 15px;
 }
 
 .message-left {
     float: left;
-    width: 80px;
-    margin-right: 10px;
+    width: 45px;
+    margin-right: 0px;
 }
 
 .oldmessage {
     display: none;
 }
 .message-left img{
-    width: 80px;
+    width: 40px;
 }
 
 .message-rightOwner {
     float: left;
     text-align: right;
-    width: 85%;
-    padding-top: 25px;
+    width: 92%;
+    padding-top: 12px;
     font-size: 12px;
 }
 
@@ -157,5 +157,5 @@
 }
 
 .message-leftOwner img{
-    width: 80px;
+    width: 40px;
 }

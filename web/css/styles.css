@@ -163,9 +163,9 @@
 .loading {
     display: block;
     background-image: url('../images/loading.gif');
-    height: 45px;
+    height: 25px;
     background-repeat: no-repeat;
-    background-size: 40px;
+    background-size: 25px;
     text-align: center;
     width: 100%;
     background-position: center;

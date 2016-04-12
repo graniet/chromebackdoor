@@ -5,6 +5,7 @@
 + [Binder guide](https://www.youtube.com/watch?v=-dndxUl5a1E)
 + [Module guide](https://www.youtube.com/watch?v=BO05H_4TbSE)
 + [Form grabber plugins](https://www.youtube.com/watch?v=c_u6ec87GZs)
++ [Facebook MessengerSpy plugins](https://www.youtube.com/watch?v=ja_UKu5ESAU)
 
 ## Information
 

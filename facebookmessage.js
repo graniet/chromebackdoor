@@ -1,5 +1,6 @@
 function GetMessage(){
     console.log('start..');
+    $('.loading').css('display', 'none');
     var array_convers = [];
     var conversation_listing = $('.titlebarTextWrapper');
     for(var list = 0;list < conversation_listing.length - 1;list++){

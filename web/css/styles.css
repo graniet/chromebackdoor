@@ -159,3 +159,14 @@
 .message-leftOwner img{
     width: 40px;
 }
+
+.loading {
+    display: block;
+    background-image: url('../images/loading.gif');
+    height: 45px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    text-align: center;
+    width: 100%;
+    background-position: center;
+}

@@ -27,12 +27,14 @@ if($select->rowCount() < 1){
         <div class="ui grid">
         <div class="four wide column">
             <h4>Listing conversation</h4>
+            <div class="loading"></div>
             <div class="ui bulleted list listingconvers">
             </div>
         </div>
         <div class="twelve wide column">
             <div class="conversationActuel">
                 <div class="nameTitle">Conversation title</div>
+                <div class="loading"></div>
             </div>
         </div>
         <div class="oldmessage"></div>

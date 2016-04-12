@@ -13,6 +13,27 @@ class Bot
         return true;
     }
     
+    
+    static function getLastSpy($bot_id = null){
+        if($bot_id != ''){
+            global $bdd;
+            if(is_numeric($bot_id)){
+                $select = $bdd->prepare("SELECT date_last FROM facebookspy WHERE bot_id = :bot_id");
+                $select->bindParam(':bot_id', $bot_id);
+                $select->execute();
+                if($select->rowCount() > 0){
+                    $date = $select->fetch()['date_last'];
+                    return $date;
+                }
+                else{
+                    $date = "No date logged";
+                    return $date;
+                }
+            }
+        }
+    }
+    
+    
     public function getSetting($bot_id = NULL, $setting_name = NULL){
         global $bdd;
         $select = $bdd->prepare("SELECT * FROM bot_settings WHERE setting_name = :name AND bot_id = :bot_id");

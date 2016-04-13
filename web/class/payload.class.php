@@ -43,7 +43,7 @@ class Payload
                   <td class="collapsing"><i class="fa fa-bug"></i> <?php echo $payload['name']; ?></td>
                   <td class="collapsing center aligned"><?php echo $payload['action']; ?> launched</td>
                   <td class="center aligned collapsing "><a class="ui blue basic button" href=''>update</a></td>
-                  <td class="center aligned collapsing "><a class="ui red basic button" href=''>delete</a></td>
+                  <td class="center aligned collapsing "><a class="ui red basic button" href='index.php?action=listpayload&command=delete&id_p=<?php echo $payload['id']; ?>'>delete</a></td>
                 </tr>
                 <?php
             }
@@ -57,6 +57,23 @@ class Payload
             </tr>
             <?php
         }
+    }
+    
+    static function Delete($p_id = NULL){
+        if($p_id != ''){
+            global $bdd;
+            $select = $bdd->prepare("SELECT * FROM payloads WHERE id = :id");
+            $select->bindParam(':id', $p_id);
+            $select->execute();
+            if($select->rowCount() > 0){
+                $delete = $bdd->prepare("DELETE FROM payloads WHERE id = :id");
+                $delete->bindParam(':id', $p_id);
+                $delete->execute();
+                return true;
+            }
+            
+        }
+        return false;
     }
 }
 ?>

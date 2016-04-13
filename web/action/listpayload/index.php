@@ -1,5 +1,8 @@
 <?php
 require_once('class/payload.class.php');
+if(isset($_GET['command']) && $_GET['command'] == "delete" && isset($_GET['id_p']) && $_GET['id_p'] != ''){
+    Payload::Delete($_GET['id_p']);
+}
 if(isset($_POST['create']))
 {
     $name = $_POST['name'];

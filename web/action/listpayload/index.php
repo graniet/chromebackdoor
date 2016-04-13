@@ -28,10 +28,10 @@ if(isset($_POST['create']))
     <div class="ui segment">
         <table class="ui celled striped table">
           <thead>
-            <tr><th colspan="3">
-              Payload listing
-            </th>
-          </tr></thead>
+            <tr>
+                <th colspan="4">Payload listing</th>
+            </tr>
+          </thead>
           <tbody>
             <?php Payload::getPayload(); ?>
           </tbody>

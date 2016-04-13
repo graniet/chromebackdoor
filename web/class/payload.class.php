@@ -41,7 +41,7 @@ class Payload
                 ?>
                 <tr>
                   <td class="collapsing"><i class="fa fa-bug"></i> <?php echo $payload['name']; ?></td>
-                  <td class="collapsing"><?php echo $payload['action']; ?> lunched</td>
+                  <td class="collapsing"><?php echo $payload['action']; ?> launched</td>
                   <td class="right aligned collapsing "><a class="ui blue basic button" href=''>update</a></td>
                   <td class="right aligned collapsing "><a class="ui red basic button" href=''>delete</a></td>
                 </tr>

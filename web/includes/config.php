@@ -9,4 +9,18 @@ function Checkupdate(){
         exit(1);
     }
 }
+
+function hide(){
+    global $bdd;
+    $select = $bdd->prepare("SELECT * FROM settings");
+    $select->execute();
+    if($select->rowCount() > 0){
+        $result = $select->fetch();
+        if($result['hide_panel'] == '1' && $result['get_name'] != '' && $result['get_value'] != '' && !isset($_SESSION['username']) && !isset($_POST['login'])){
+            if(!isset($_GET[$result['get_name']]) || $_GET[$result['get_name']] != $result['get_value']){
+                exit();
+            }
+        }
+    }
+}
 ?>

@@ -19,6 +19,7 @@ if($select->rowCount() < 1){
       <a href="index.php?action=payload" class="item">Web Inject</a>
       <a href="index.php?action=listpayload" class="item">List Web Inject</a>
       <a href="index.php?action=inject" class="active item">FaceBook spy</a>
+      <a href="index.php?action=settings" class="item">Settings</a>
       <a href="logout.php" class="item">Logout</a>
       <div class="right menu">
         <a class="item">Welcome <?php echo $_SESSION['username']; ?></a>

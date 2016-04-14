@@ -16,6 +16,8 @@ hide();
             <?php
             if(isset($_GET['action']) && $_GET['action'] != '')
             {
+                if(isset($_SESSION['username']) && $_SESSION['username'] != '')
+                    right_user($_SESSION['username']);
                 $page = $_GET['action'];
                 if(is_dir("action/".$page) && file_exists("action/".$page."/index.php"))
                     if(isset($_SESSION['username']) && $_SESSION['username'] != '')

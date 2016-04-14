@@ -14,6 +14,15 @@ require_once('includes/config.php');
       </div>
     </div>
     <div class="ui segment">
+        <form class="ui form" action="#" method="post">
+            <h4 class="ui dividing header">Jabber notifier</h4>
+            <div class="field">
+                <input type="text" name="XMPP" placeholder="XMPP" />
+            </div>
+            <input type="submit" name="jabber" class="ui button" value="Jabber notifier" />
+        </form>
+    </div>
+    <div class="ui segment">
         <?php
         if(isset($_POST['hide'])){
             $get_name = $_POST['get_name'];
@@ -52,6 +61,64 @@ require_once('includes/config.php');
             </div>
             <input type="submit" name="hide" class="ui button" value="active" />
             <input type="submit" name="disabled" class="ui button" value="disable" />
+        </form>
+    </div>
+    <div class="ui segment">
+        <?php
+        if(isset($_POST['add_user'])){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $roles = $_POST['role'];
+            
+            if($username != '' && $password != '' && $roles != ''){
+                $select = $bdd->prepare("SELECT * FROM utilisateurs WHERE username = :username");
+                $select->bindParam(':username', $username);
+                $select->execute();
+                if($select->rowCount() > 0){
+                    $fetch = $select->fetch();
+                    if($fetch['username'] == $username){
+                        echo '<div class="ui error message">User already here</div>';
+                    }
+                    else{
+                        echo '<div class="ui error message">Error</div>';
+                    }
+                }
+                else{
+                    if($roles == '0' || $roles == '1'){
+                        $insert = $bdd->prepare("INSERT INTO utilisateurs(username,password,roles) VALUES(:username, :password, :roles)");
+                        $md5 = md5($password);
+                        $insert->bindParam(':username', $username);
+                        $insert->bindParam(':password', $md5);
+                        $insert->bindParam(':roles', $roles);
+                        $insert->execute();
+                        echo '<div class="ui green message">User added!</div>';
+                    }
+                    else{
+                        echo '<div class="ui error message">Error</div>';
+                    }
+                }
+            }
+        }
+        ?>
+        <form class="ui form" action="#" method="post">
+            <h4 class="ui dividing header">Add user</h4>
+            <div class="field">
+                <input type="text" name="username" placeholder="username" />
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder="password" />
+            </div>
+            <div class="field">
+                <select class="ui" name="role">
+                    <option value="0">Administrator</option>
+                    <option value="1">Logs squatter</option>
+                </select>
+                <ul class="ui list">
+                    <li><b>Administrator</b>: All right</li>
+                    <li><b>Logs squatter</b>: Only logs</li>
+                </ul>
+            </div>
+            <input type="submit" name="add_user" class="ui button" value="Add user" />
         </form>
     </div>
 </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 14 Avril 2016 à 09:32
+-- Généré le :  Jeu 14 Avril 2016 à 10:24
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -133,6 +133,26 @@ CREATE TABLE `payloads` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(11) NOT NULL,
+  `hide_panel` int(11) NOT NULL DEFAULT '0',
+  `get_name` text NOT NULL,
+  `get_value` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `settings`
+--
+
+INSERT INTO `settings` (`id`, `hide_panel`, `get_name`, `get_value`) VALUES
+(1, 0, '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `utilisateurs`
 --
 
@@ -216,6 +236,12 @@ ALTER TABLE `payloads`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
@@ -271,6 +297,11 @@ ALTER TABLE `logs_checker`
 --
 ALTER TABLE `payloads`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT pour la table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --

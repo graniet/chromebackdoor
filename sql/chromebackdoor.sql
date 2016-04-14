@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 14 Avril 2016 à 10:24
+-- Généré le :  Jeu 14 Avril 2016 à 11:04
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -160,15 +160,16 @@ CREATE TABLE `utilisateurs` (
   `id` int(11) NOT NULL,
   `username` text NOT NULL,
   `password` varchar(255) NOT NULL,
+  `roles` int(11) NOT NULL DEFAULT '3',
   `bot` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateurs`
 --
 
-INSERT INTO `utilisateurs` (`id`, `username`, `password`, `bot`) VALUES
-(1, 'root', '7b24afc8bc80e548d66c4e7ff72171c5', 0);
+INSERT INTO `utilisateurs` (`id`, `username`, `password`, `roles`, `bot`) VALUES
+(1, 'root', '7b24afc8bc80e548d66c4e7ff72171c5', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -306,7 +307,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `webinject`
 --

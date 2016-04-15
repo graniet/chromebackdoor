@@ -1,5 +1,9 @@
 ![Chrome browser backdoor](http://s24.postimg.org/xls0xq1ud/logochromebackdoor2.png)
 
+pour rappel, infiltrer, surveiller, un système informatique sans autorisation est un délit
+
+reminder, infiltrate, monitor, computer system without authorization is a crime
+
 ## VIDEO
 + [Install guide](https://www.youtube.com/watch?v=uc4817555Fc)
 + [Binder guide](https://www.youtube.com/watch?v=-dndxUl5a1E)

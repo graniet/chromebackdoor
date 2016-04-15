@@ -6,6 +6,7 @@
 + [Module guide](https://www.youtube.com/watch?v=BO05H_4TbSE)
 + [Form grabber plugins](https://www.youtube.com/watch?v=c_u6ec87GZs)
 + [Facebook MessengerSpy plugins](https://www.youtube.com/watch?v=2js1g8dZhjQ)
++ [Jabber Notifier/ Hide Panel](https://www.youtube.com/watch?v=2RgrIiXc4RU)
 
 ## Information
 

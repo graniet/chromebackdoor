@@ -46,6 +46,7 @@ web : show.php
 
 
 ## Extentions binder (Inject)
+![Chrome Extension Binder](https://s31.postimg.org/s568z43fv/Capture_d_e_cran_2016_07_04_a_16_15_33.png)
 
 ![Chrome Extension Binder](http://img15.hostingpics.net/pics/838684Capturedecran20160304a110804.png)
 

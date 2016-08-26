@@ -10,6 +10,14 @@
 + [Jabber Notifier/ Hide Panel](https://www.youtube.com/watch?v=2RgrIiXc4RU)
 + [Windows infection](https://www.youtube.com/watch?v=vnsZVMTXOJQ)
 
+
+## Installation
+
+* Go to install folder
+```bash
+python install.py install
+```
+
 ## Information
 
 Username panel : root

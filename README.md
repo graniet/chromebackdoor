@@ -13,6 +13,9 @@
 
 ## Installation
 
+Require:
++ crxmake
+
 * Let's go
 ```bash
 python chromebackdoor.py

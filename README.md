@@ -13,9 +13,13 @@
 
 ## Installation
 
-* Go to install folder
+Require:
++ crxmake
++ wine32
+
+* Let's go
 ```bash
-python install.py install
+python chromebackdoor.py
 ```
 
 ## Information

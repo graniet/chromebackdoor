@@ -15,6 +15,7 @@
 
 Require:
 + crxmake
++ wine32
 
 * Let's go
 ```bash

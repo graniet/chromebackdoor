@@ -10,14 +10,16 @@
 + [Jabber Notifier/ Hide Panel](https://www.youtube.com/watch?v=2RgrIiXc4RU)
 + [Windows infection](https://www.youtube.com/watch?v=vnsZVMTXOJQ)
 
+## KALI LINUX
 
-## Installation
+![chromebackdoor v3](https://s17.postimg.org/sv36ccjdb/fzeezfzfe.png)
 
 Require:
-+ crxmake
-+ wine32
++ pip install crxmake
++ pip install win32
 
-* Let's go
+Let's go
+
 ```bash
 python chromebackdoor.py
 ```

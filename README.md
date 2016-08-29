@@ -38,28 +38,6 @@ Backdoor => Relais => Web Panel
 
 ![windows infection](https://s17.postimg.org/97ca9pofj/bot.png)
 
-## Extension
-
-![backdoor Chrome](http://s9.postimg.org/vvo5ncxy7/chrome.png)
-
-## Change name, icones, description
-
-change it on manifest
-
-![Backdoor chrome](http://s15.postimg.org/yf0rmsfuj/rename.png)
-
-## Change Gate on script
-
-js/check.js
-
-web : show.php
-
-```JavaScript
-    var server_web = "http://localhost:8888/"
-    var lock_page = "relais/lock.php"
-    var gate_page = "relais/index.php"
-```
-
 ## Module injector ##
 ![Chrome modul Injector](http://img4.hostingpics.net/pics/335930Capturedecran20160304a183405.png)
 
@@ -93,26 +71,6 @@ Make it on webpanel
 
 ![backdoor chrome panel](http://img15.hostingpics.net/pics/277755panelback.png)
 
-## lock.php
-
-Update lock page with 1
-
-![Backdoor lock](http://s27.postimg.org/vahc0lb8z/lock.png)
-
-## Python receiver 
-
-Update  GATE var on Cbackdoor.py
-
-```Python
-GATE = "http://localhost:8888/chromebackdoor/web/gate.php?last=1"
-```
-
-Start 
-
-```Shell
-python CBackdoor.py
-```
-![Backdoor chrome python receiver](http://s12.postimg.org/ywkao1mv1/Capture_d_e_cran_2016_01_18_a_19_43_39.png)
 
 + pour rappel, infiltrer, surveiller, un système informatique sans autorisation est un délit
 + reminder, infiltrate, monitor, computer system without authorization is a crime

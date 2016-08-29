@@ -1,0 +1,16 @@
+{
+  "title": "//NAME//",
+  "name": "//NAME_NB//",
+  "version": "//VERSION//",
+  "description": "//DESCRIPTION//",
+  "main": "index.js",
+  "author": "LynxFramework",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jetpack"
+  ]
+}

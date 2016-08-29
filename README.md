@@ -34,6 +34,10 @@ Password panel : toor
 
 Backdoor => Relais => Web Panel
 
+### web browser infection
+
+![windows infection](https://s17.postimg.org/97ca9pofj/bot.png)
+
 ## Extension
 
 ![backdoor Chrome](http://s9.postimg.org/vvo5ncxy7/chrome.png)

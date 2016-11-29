@@ -13,7 +13,13 @@ unzip folder.zip
 /web/includes/config.php
 ```
 
-4) Login on webpanel (web/index.php)
+4) Upload .SQL on database
+
+```sh
+/SQL/chromebackdoor.sql
+```
+
+5) Login on webpanel (web/index.php)
 ```python
 username = root
 password = toor

@@ -42,7 +42,7 @@ def show_plugins(backdoor = ''):
 	    current+=1
     user_input = raw_input("[?] please select numbers ? ")
     if listing[int(user_input) - 1] != "":
-	module_content = open(listing[int(user_input) - 1]).read()
+	module_content = open(listing[int(user_input) - 1]).read().split("%content%")[1].split("%content%")[0]
 	print "["+bcolors.OKBLUE+"*"+bcolors.ENDC+"]" + listing[int(user_input) - 1]
 	oned = ""
 	if oned == "":

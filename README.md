@@ -16,7 +16,7 @@
 
 Require:
 + pip install crxmake
-+ pip install wine32
++ wine32
 
 Let's go
 

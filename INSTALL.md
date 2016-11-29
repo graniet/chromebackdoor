@@ -22,6 +22,8 @@ Now enter a botmaster domain name (need SSL):
 Same for relais (need SSL):
 ```sh
 [?] Website relais url (https://localhost/relais)? https://lynxrelay.com/relais
+or use same domain
+[?] Website relais url (https://localhost/relais)? https://lynxframework.com/relais
 ```
 ```sh
 [?] Information correct [Y/n]? Y

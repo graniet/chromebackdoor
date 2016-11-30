@@ -75,7 +75,8 @@ python chromebackdoor.py --build
 ```
 3) wine start installer.exe and generate bot.exe
 
-4) Start bot.exe with windows
 ```sh
 Generate successful : {chromebackdoor_folder}/bot.exe
 ```
+
+4) Start bot.exe with windows

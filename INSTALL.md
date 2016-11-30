@@ -74,6 +74,7 @@ python chromebackdoor.py --build
 [?] crx fime (/root/..) ? /root/backdoor.crx
 ```
 3) wine start installer.exe and generate bot.exe
+
 4) Start bot.exe with windows
 ```sh
 Generate successful : {chromebackdoor_folder}/bot.exe

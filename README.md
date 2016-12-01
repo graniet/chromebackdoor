@@ -2,8 +2,8 @@
 
 
 ## VIDEO
-+ [Install Text](https://github.com/graniet/chromebackdoor/blob/master/INSTALL.md)
-+ [Install Video](https://www.youtube.com/watch?v=uc4817555Fc)
++ [Install Text (V 3.0)](https://github.com/graniet/chromebackdoor/blob/master/INSTALL.md)
++ [Install Video (OLD)](https://www.youtube.com/watch?v=uc4817555Fc)
 + [Binder guide](https://www.youtube.com/watch?v=-dndxUl5a1E)
 + [Module guide](https://www.youtube.com/watch?v=BO05H_4TbSE)
 + [Form grabber plugins](https://www.youtube.com/watch?v=c_u6ec87GZs)

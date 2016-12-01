@@ -10,6 +10,7 @@
 + [Facebook MessengerSpy plugins](https://www.youtube.com/watch?v=2js1g8dZhjQ)
 + [Jabber Notifier/ Hide Panel](https://www.youtube.com/watch?v=2RgrIiXc4RU)
 + [Windows infection](https://www.youtube.com/watch?v=vnsZVMTXOJQ)
++ [Rubber Ducky Payload](https://www.youtube.com/watch?v=RP8-OwtchXE)
 
 #Require:
 + pip install crxmake

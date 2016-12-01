@@ -1,0 +1,7 @@
+Version 3.0
+[+] Python backdoor script generator.
+[+] INNO .exe (loader) builder.
+[+] Update webpanel file.
+[+] Rubber Ducky payload generator.
+[+] Firefox XPI added.
+[+] IExplorer BHO added.

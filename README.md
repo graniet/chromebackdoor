@@ -20,6 +20,8 @@ Let's go
 
 ```bash
 python chromebackdoor.py
+user: root
+pass: toor
 ```
 
 ## KALI LINUX
